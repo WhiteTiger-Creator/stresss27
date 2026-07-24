@@ -1,0 +1,98 @@
+[
+  {
+    "snapshot_id": "cx-01",
+    "captured_ms": 20730000000000,
+    "severity": "critical",
+    "volume": "prod-db",
+    "detector": "malicious snapshot injection",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "cx-02",
+    "captured_ms": 20730000000350,
+    "severity": "high",
+    "volume": "prod-db",
+    "detector": "backup job hijack",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "cx-03",
+    "captured_ms": 20730000001600,
+    "severity": "high",
+    "volume": "vm-images",
+    "detector": "restore replay storm",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "cx-04",
+    "captured_ms": 20730000002100,
+    "severity": "critical",
+    "volume": "file-share",
+    "detector": "malicious snapshot injection",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "cx-05",
+    "captured_ms": 20730000002500,
+    "severity": "high",
+    "volume": "mail-store",
+    "detector": "malicious snapshot injection",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "cx-06",
+    "captured_ms": 20730000003100,
+    "severity": "critical",
+    "volume": "archive",
+    "detector": "retention drift anomaly",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "cx-07",
+    "captured_ms": 20730000003700,
+    "severity": "high",
+    "volume": "config-repo",
+    "detector": "credential in manifest",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "cx-08",
+    "captured_ms": 20730000004100,
+    "severity": "medium",
+    "volume": "prod-db",
+    "detector": "privileged vault grant",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "cx-09",
+    "captured_ms": 20730000004300,
+    "severity": "low",
+    "volume": "vm-images",
+    "detector": "stale snapshot reuse",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "cx-10",
+    "captured_ms": 20730000004700,
+    "severity": "high",
+    "volume": "file-share",
+    "detector": "manifest violation flood",
+    "dismissed": true
+  },
+  {
+    "snapshot_id": "cx-11",
+    "captured_ms": 20730000005100,
+    "severity": "high",
+    "volume": "archive",
+    "detector": "backup log tampering burst",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "cx-12",
+    "captured_ms": 20730000005400,
+    "severity": "high",
+    "volume": "prod-db",
+    "detector": "retention period tampering",
+    "dismissed": false
+  }
+]

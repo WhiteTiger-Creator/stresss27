@@ -1,0 +1,226 @@
+[
+  {
+    "snapshot_id": "snp-401",
+    "captured_ms": 20730000000000,
+    "severity": "critical",
+    "volume": "prod-db",
+    "detector": "malicious snapshot injection",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-402",
+    "captured_ms": 20730000000250,
+    "severity": "Critical",
+    "volume": "prod-db",
+    "detector": "backup job hijack",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-403",
+    "captured_ms": 20730000000800,
+    "severity": "high",
+    "volume": "prod-db",
+    "detector": "retention period tampering",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-410",
+    "captured_ms": 20730000001100,
+    "severity": "HIGH ",
+    "volume": "file-share",
+    "detector": "manifest violation flood",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-411",
+    "captured_ms": 20730000001500,
+    "severity": "high",
+    "volume": "file-share",
+    "detector": "restore replay storm",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-420",
+    "captured_ms": 20730000002000,
+    "severity": "high",
+    "volume": "vm-images",
+    "detector": "oversized restore abuse",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-404",
+    "captured_ms": 20730000003000,
+    "severity": "high",
+    "volume": "prod-db",
+    "detector": "archive parsing exploit",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-405",
+    "captured_ms": 20730000003150,
+    "severity": "critical",
+    "volume": "prod-db",
+    "detector": "backup credential theft",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-430",
+    "captured_ms": 20730000003400,
+    "severity": "critical",
+    "volume": "mail-store",
+    "detector": "malicious snapshot injection",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-431",
+    "captured_ms": 20730000003700,
+    "severity": "critical",
+    "volume": "config-repo",
+    "detector": "malicious snapshot injection",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-440",
+    "captured_ms": 20730000003900,
+    "severity": "high",
+    "volume": "archive",
+    "detector": "backup log tampering burst",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-441",
+    "captured_ms": 20730000005200,
+    "severity": "high",
+    "volume": "prod-db",
+    "detector": "privileged policy grant",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-442",
+    "captured_ms": 20730000005400,
+    "severity": "medium",
+    "volume": "file-share",
+    "detector": "unfamiliar backup client",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-443",
+    "captured_ms": 20730000005500,
+    "severity": "low",
+    "volume": "vm-images",
+    "detector": "stale snapshot reuse",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-444",
+    "captured_ms": 20730000005600,
+    "severity": "medium",
+    "volume": "archive",
+    "detector": "restore from tor exit",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-450",
+    "captured_ms": 20730000006200,
+    "severity": "high",
+    "volume": "prod-db",
+    "detector": "malicious snapshot injection",
+    "dismissed": true
+  },
+  {
+    "snapshot_id": "snp-451",
+    "captured_ms": 20730000006300,
+    "severity": "critical",
+    "volume": "file-share",
+    "detector": "manifest violation flood",
+    "dismissed": "yes"
+  },
+  {
+    "snapshot_id": "snp-460",
+    "captured_ms": 20730000007200,
+    "severity": "high",
+    "volume": "config-repo",
+    "detector": "restore replay storm",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-461",
+    "captured_ms": 20730000007350,
+    "severity": "critical",
+    "volume": "config-repo",
+    "detector": "restore replay storm",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-470",
+    "captured_ms": 20730000008200,
+    "severity": "high",
+    "volume": "vm-images",
+    "detector": "malicious snapshot injection",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-471",
+    "captured_ms": 20730000008500,
+    "severity": "high",
+    "volume": "mail-store",
+    "detector": "brute force restore lockout",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-472",
+    "captured_ms": 20730000008800,
+    "severity": "critical",
+    "volume": "prod-db",
+    "detector": "privileged vault grant",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-473",
+    "captured_ms": 20730000009200,
+    "severity": "high",
+    "volume": "file-share",
+    "detector": "exfil via restore stream",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-474",
+    "captured_ms": 20730000009400,
+    "severity": "critical",
+    "volume": "archive",
+    "detector": "retention drift anomaly",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-480",
+    "captured_ms": 20730000010200,
+    "severity": "high",
+    "volume": "vm-images",
+    "detector": "credential in manifest",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-481",
+    "captured_ms": 20730000010290,
+    "severity": "high",
+    "volume": "vm-images",
+    "detector": "signing key exposure",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-401",
+    "captured_ms": 20730000000120,
+    "severity": "high",
+    "volume": "prod-db",
+    "detector": "malicious snapshot injection",
+    "dismissed": false
+  },
+  {
+    "snapshot_id": "snp-440",
+    "captured_ms": 20730000003900,
+    "severity": "critical",
+    "volume": "archive",
+    "detector": "backup log tampering burst",
+    "dismissed": false
+  }
+]

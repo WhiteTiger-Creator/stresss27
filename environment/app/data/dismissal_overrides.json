@@ -1,0 +1,74 @@
+[
+  {
+    "volume": "config-repo",
+    "severity_scope": "all",
+    "start_ms": 20730000007150,
+    "end_ms": 20730000007400
+  },
+  {
+    "volume": "prod-db",
+    "severity_scope": "critical",
+    "start_ms": 20730000008750,
+    "end_ms": 20730000008850
+  },
+  {
+    "volume": "mail-store",
+    "severity_scope": "high",
+    "start_ms": 20730000008450,
+    "end_ms": 20730000008480
+  },
+  {
+    "volume": "file-share",
+    "severity_scope": "high",
+    "start_ms": 20730000001000,
+    "end_ms": 20730000001200
+  },
+  {
+    "volume": "prod-db",
+    "severity_scope": "all",
+    "start_ms": 20730000000200,
+    "end_ms": 20730000000300
+  },
+  {
+    "volume": "prod-db",
+    "severity_scope": "all",
+    "start_ms": 20730000000300,
+    "end_ms": 20730000000360
+  },
+  {
+    "volume": "vm-images",
+    "severity_scope": "all",
+    "start_ms": 20730000001800,
+    "end_ms": 20730000001847
+  },
+  {
+    "volume": "archive",
+    "severity_scope": "all",
+    "start_ms": 20730000003700,
+    "end_ms": 20730000003761
+  },
+  {
+    "volume": "vm-images",
+    "severity_scope": "all",
+    "start_ms": 20730000008000,
+    "end_ms": 20730000008071
+  },
+  {
+    "volume": "mail-store",
+    "severity_scope": "all",
+    "start_ms": 20730000008300,
+    "end_ms": 20730000008391
+  },
+  {
+    "volume": "file-share",
+    "severity_scope": "all",
+    "start_ms": 20730000009000,
+    "end_ms": 20730000009047
+  },
+  {
+    "volume": "vm-images",
+    "severity_scope": "all",
+    "start_ms": 20730000010000,
+    "end_ms": 20730000010061
+  }
+]
