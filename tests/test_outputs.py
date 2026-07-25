@@ -553,15 +553,21 @@ def _grant_traversal(path: Path) -> None:
 
 
 def _stage_readable(path: Path) -> Path:
-    """Return a candidate-readable path; inputs under the locked trees are copied out."""
+    """Return a candidate-readable path; inputs under the locked trees are copied out,
+    and inputs elsewhere (e.g. root-only pytest tmp dirs) are granted read + traversal."""
     p = Path(path)
-    if not str(p).startswith(("/tests", "/solution")):
-        return p
-    fd, tmp = tempfile.mkstemp(prefix="cand_", suffix="_" + p.name)
-    os.close(fd)
-    shutil.copy(p, tmp)
-    os.chmod(tmp, 0o644)
-    return Path(tmp)
+    if str(p).startswith(("/tests", "/solution")):
+        fd, tmp = tempfile.mkstemp(prefix="cand_", suffix="_" + p.name)
+        os.close(fd)
+        shutil.copy(p, tmp)
+        os.chmod(tmp, 0o644)
+        return Path(tmp)
+    try:
+        os.chmod(p, (os.stat(p).st_mode & 0o777) | 0o044)
+        _grant_traversal(p)
+    except OSError:
+        pass
+    return p
 
 
 def _run_candidate(
@@ -887,54 +893,39 @@ def test_pipeline_output_tracks_its_input(tmp_path_factory):
     assert perturbed_summary != base_summary
 
 
-def test_repair_runtime_does_not_read_tests_tree():
-    """The repair runtime does not read anything under the /tests tree."""
-    with tempfile.TemporaryDirectory() as tmp:
-        guard = Path(tmp) / "sitecustomize.py"
-        guard.write_text(
-            "\n".join(  # noqa: FLY002
-                [
-                    "import builtins",
-                    "from pathlib import Path",
-                    "_open = builtins.open",
-                    "_text = Path.read_text",
-                    "_bytes = Path.read_bytes",
-                    "def _blocked(value):",
-                    "    try: return '/tests' in str(Path(value).resolve())",
-                    "    except Exception: return False",
-                    "def guarded_open(file, *args, **kwargs):",
-                    "    if _blocked(file): raise PermissionError(file)",
-                    "    return _open(file, *args, **kwargs)",
-                    "def guarded_text(self, *args, **kwargs):",
-                    "    if _blocked(self): raise PermissionError(self)",
-                    "    return _text(self, *args, **kwargs)",
-                    "def guarded_bytes(self, *args, **kwargs):",
-                    "    if _blocked(self): raise PermissionError(self)",
-                    "    return _bytes(self, *args, **kwargs)",
-                    "builtins.open = guarded_open",
-                    "Path.read_text = guarded_text",
-                    "Path.read_bytes = guarded_bytes",
-                ]
-            )
-            + "\n"
-        )
-        out = Path(tmp) / "out"
-        env = dict(os.environ)
-        env["PYTHONPATH"] = tmp
-        result = subprocess.run(  # noqa: PLW1510
+def test_repair_runtime_cannot_read_tests_or_solution(tmp_path_factory):
+    """Real OS-level isolation: the candidate runs unprivileged and /tests and
+    /solution are root-only, so it cannot read the reference implementation or
+    expected outputs (even via os.open) -- yet a legitimate repair still succeeds."""
+    if not _candidate_enabled():
+        pytest.skip("requires root plus the unprivileged candidate user to enforce OS isolation")
+    for locked in ("/tests", "/solution"):
+        if not Path(locked).is_dir():
+            continue
+        assert oct(Path(locked).stat().st_mode)[-3:] == "700", f"{locked} must be 0700 root-only"
+        probe = subprocess.run(  # noqa: PLW1510
             [
-                "python3",
-                str(CLI),
-                "repair",
-                "--output-dir",
-                str(out),
+                "runuser", "-u", CANDIDATE_USER, "--", "python3", "-c",
+                (
+                    "import os, sys\n"
+                    f"try:\n"
+                    f"    next(os.scandir({locked!r}))\n"
+                    "    print('READABLE'); sys.exit(2)\n"
+                    "except OSError:\n"
+                    "    sys.exit(0)\n"
+                ),
             ],
-            capture_output=True,
-            text=True,
-            timeout=60,
-            env=env,
+            capture_output=True, text=True,
         )
-        assert result.returncode == 0, result.stderr
+        assert probe.returncode == 0, f"candidate could read {locked}: {probe.stdout}{probe.stderr}"
+    out = tmp_path_factory.mktemp("iso_repair")
+    result = _run_candidate(
+        ["python3", str(CLI), "repair", "--output-dir", str(out)],
+        write_dirs=(out,),
+    )
+    assert result.returncode == 0, f"unprivileged repair failed: {result.stderr}"
+    summary = json.loads((out / "summary.json").read_text())
+    assert summary == _compute_summary(_load_events(INPUT_PATH))
 
 
 def test_pipeline_reruns_idempotently(summary: dict, escalated_rows: list[dict], tmp_path_factory):
@@ -985,7 +976,7 @@ def test_cli_diagnose_subcommand(expected: dict, dossier_text: str):
     report = OUTPUT_DIR / "diagnosis_redundant.json"
     if report.exists():
         report.unlink()
-    result = subprocess.run(  # noqa: PLW1510
+    result = _run_candidate(
         [
             "python3",
             str(CLI),
@@ -995,9 +986,7 @@ def test_cli_diagnose_subcommand(expected: dict, dossier_text: str):
             "--report",
             str(report),
         ],
-        capture_output=True,
-        text=True,
-        timeout=60,
+        write_dirs=(report.parent,),
     )
     assert report.exists(), f"diagnose failed (rc={result.returncode}): {result.stderr}"
     data = json.loads(report.read_text())
@@ -1022,16 +1011,14 @@ def test_cli_diagnose_subcommand(expected: dict, dossier_text: str):
 def test_diagnose_rejects_stray_input_flag(tmp_path_factory):
     """diagnose is stateless: it accepts only --dossier/--report and rejects a stray --input."""
     report = tmp_path_factory.mktemp("diag_reject") / "diagnosis.json"
-    result = subprocess.run(  # noqa: PLW1510
+    result = _run_candidate(
         [
             "python3", str(CLI), "diagnose",
             "--dossier", str(DOSSIER_PATH),
             "--report", str(report),
             "--input", str(DOSSIER_PATH),
         ],
-        capture_output=True,
-        text=True,
-        timeout=60,
+        write_dirs=(report.parent,),
     )
     assert result.returncode != 0, "diagnose must reject a stray --input flag"
     assert not report.exists(), "diagnose must not write a report when given an unknown flag"

@@ -19,6 +19,12 @@ COPY app/ /app/
 RUN cp /app/workflow/export_report.py /app/workflow/.export_report.original \
     && chmod a-w /app/workflow/.export_report.original
 
+# Unprivileged identity the verifier uses to run candidate-controlled code (the
+# CLI and the repaired pipeline). It cannot read the root-only /tests or /solution
+# trees, so a program that tries to copy the reference implementation or expected
+# outputs via os.open/os.read is denied at the OS level.
+RUN useradd --system --create-home --shell /usr/sbin/nologin snapshot-candidate
+
 # Persistence and escalation paths left behind on the backup control plane during the Snapsentry
 # intrusion: a rogue sync-automation key, a passwordless sudoers escalation, and a
 # world-readable snapshot-signing key.

@@ -88,1385 +88,1385 @@ Service owners warned against patching snapshot artifacts.
 ## Console shift archive (2025-Q4 through 2026-Q2)
 
 ### Console shift 0001 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0001 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8801 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0001 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 40 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 1.
+Restore drill from vol-archive-02 rehydrated 47 GiB in 6 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0002 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0002 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8802 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0002 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 4:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 16s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 61 objects in flight and none lost.
 
 ### Console shift 0003 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0003 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8803 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0003 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 68 live, 13 tombstoned, zero dangling references; the reclaimed space returned 5 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 75 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0004 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0004 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8804 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0004 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 82 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 31s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 15% headroom after the eu-central onboarding; growth trend projects the next expansion at week 8, tracked under the standing capacity ticket.
 
 ### Console shift 0005 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0005 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8805 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0005 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 96 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 103 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0006 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0006 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8806 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0006 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 110 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 11.
+Restore drill from vol-archive-02 rehydrated 117 GiB in 11 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0007 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0007 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8807 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0007 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 5:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 21s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 131 objects in flight and none lost.
 
 ### Console shift 0008 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0008 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8808 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0008 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 138 live, 3 tombstoned, zero dangling references; the reclaimed space returned 15 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 145 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0009 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0009 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8809 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0009 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 152 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 36s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 25% headroom after the eu-central onboarding; growth trend projects the next expansion at week 18, tracked under the standing capacity ticket.
 
 ### Console shift 0010 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0010 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8810 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0010 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 166 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 173 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0011 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0011 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8811 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0011 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 180 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 21.
+Restore drill from vol-archive-02 rehydrated 187 GiB in 16 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0012 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0012 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8812 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0012 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 6:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 26s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 201 objects in flight and none lost.
 
 ### Console shift 0013 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0013 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8813 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0013 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 208 live, 33 tombstoned, zero dangling references; the reclaimed space returned 25 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 215 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0014 — eta lane
 > **Triage proposal (2026-02-09 - #BAK-4907)** Tomas: snapshots whose captured_ms will not parse as an integer should be dropped from the export entirely *(Superseded — reversed in the 2026-05 Snapsentry review; see the matching decision entry.)*
-Shift lead noted routine snapshot drift on eta during console window 0014 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8814 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0014 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 222 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 41s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 35% headroom after the eu-central onboarding; growth trend projects the next expansion at week 28, tracked under the standing capacity ticket.
 
 ### Console shift 0015 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0015 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8815 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0015 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 236 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 243 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0016 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0016 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8816 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0016 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 250 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 31.
+Restore drill from vol-archive-02 rehydrated 257 GiB in 21 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0017 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0017 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8817 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0017 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 7:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 31s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 271 objects in flight and none lost.
 
 ### Console shift 0018 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0018 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8818 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0018 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 278 live, 23 tombstoned, zero dangling references; the reclaimed space returned 35 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 285 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0019 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0019 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8819 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0019 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 292 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 1s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 45% headroom after the eu-central onboarding; growth trend projects the next expansion at week 38, tracked under the standing capacity ticket.
 
 ### Console shift 0020 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0020 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8820 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0020 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 46 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 53 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0021 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0021 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8821 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0021 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 60 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 41.
+Restore drill from vol-archive-02 rehydrated 67 GiB in 26 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0022 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0022 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8822 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0022 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 8:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 36s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 81 objects in flight and none lost.
 
 ### Console shift 0023 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0023 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8823 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0023 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 88 live, 13 tombstoned, zero dangling references; the reclaimed space returned 45 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 95 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0024 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0024 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8824 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0024 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 102 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 6s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 55% headroom after the eu-central onboarding; growth trend projects the next expansion at week 48, tracked under the standing capacity ticket.
 
 ### Console shift 0025 — beta lane
 > **Triage proposal (2026-02-12 - #BAK-4911)** Tomas: treat any non-empty dismissed string as true, including 'false' and 'no' *(Superseded — reversed in the 2026-05 Snapsentry review; see the matching decision entry.)*
-Shift lead noted routine snapshot drift on beta during console window 0025 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8825 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0025 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 116 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 123 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0026 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0026 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8826 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0026 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 130 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 51.
+Restore drill from vol-archive-02 rehydrated 137 GiB in 31 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0027 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0027 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8827 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0027 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 9:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 41s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 151 objects in flight and none lost.
 
 ### Console shift 0028 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0028 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8828 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0028 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 158 live, 3 tombstoned, zero dangling references; the reclaimed space returned 3 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 165 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0029 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0029 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8829 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0029 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 172 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 11s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 10% headroom after the eu-central onboarding; growth trend projects the next expansion at week 6, tracked under the standing capacity ticket.
 
 ### Console shift 0030 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0030 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8830 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0030 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 186 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 193 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0031 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0031 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8831 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0031 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 200 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 9.
+Restore drill from vol-archive-02 rehydrated 207 GiB in 36 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0032 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0032 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8832 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0032 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 10:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 1s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 221 objects in flight and none lost.
 
 ### Console shift 0033 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0033 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8833 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0033 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 228 live, 33 tombstoned, zero dangling references; the reclaimed space returned 13 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 235 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0034 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0034 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8834 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0034 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 242 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 16s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 20% headroom after the eu-central onboarding; growth trend projects the next expansion at week 16, tracked under the standing capacity ticket.
 
 ### Console shift 0035 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0035 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8835 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0035 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 256 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 263 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0036 — epsilon lane
 > **Triage proposal (2026-02-15 - #BAK-4914)** Dana: when an snapshot_id repeats, keep the first row encountered and discard the rest *(Superseded — reversed in the 2026-05 Snapsentry review; see the matching decision entry.)*
-Shift lead noted routine snapshot drift on epsilon during console window 0036 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8836 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0036 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 270 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 19.
+Restore drill from vol-archive-02 rehydrated 277 GiB in 41 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0037 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0037 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8837 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0037 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 2:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 6s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 291 objects in flight and none lost.
 
 ### Console shift 0038 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0038 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8838 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0038 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 298 live, 23 tombstoned, zero dangling references; the reclaimed space returned 23 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 45 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0039 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0039 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8839 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0039 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 52 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 21s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 30% headroom after the eu-central onboarding; growth trend projects the next expansion at week 26, tracked under the standing capacity ticket.
 
 ### Console shift 0040 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0040 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8840 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0040 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 66 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 73 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0041 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0041 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8841 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0041 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 80 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 29.
+Restore drill from vol-archive-02 rehydrated 87 GiB in 1 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0042 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0042 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8842 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0042 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 3:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 11s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 101 objects in flight and none lost.
 
 ### Console shift 0043 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0043 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8843 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0043 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 108 live, 13 tombstoned, zero dangling references; the reclaimed space returned 33 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 115 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0044 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0044 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8844 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0044 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 122 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 26s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 40% headroom after the eu-central onboarding; growth trend projects the next expansion at week 36, tracked under the standing capacity ticket.
 
 ### Console shift 0045 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0045 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8845 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0045 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 136 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 143 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0046 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0046 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8846 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0046 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 150 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 39.
+Restore drill from vol-archive-02 rehydrated 157 GiB in 6 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0047 — theta lane
 > **Triage proposal (2026-02-18 - #BAK-4917)** Dana: override rows with unrecognized severity_scope values should be normalized to scope 'all' so no window is lost *(Superseded — reversed in the 2026-05 Snapsentry review; see the matching decision entry.)*
-Shift lead noted routine snapshot drift on theta during console window 0047 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8847 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0047 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 4:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 16s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 171 objects in flight and none lost.
 
 ### Console shift 0048 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0048 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8848 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0048 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 178 live, 3 tombstoned, zero dangling references; the reclaimed space returned 43 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 185 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0049 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0049 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8849 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0049 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 192 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 31s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 50% headroom after the eu-central onboarding; growth trend projects the next expansion at week 46, tracked under the standing capacity ticket.
 
 ### Console shift 0050 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0050 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8850 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0050 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 206 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 213 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0051 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0051 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8851 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0051 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 220 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 49.
+Restore drill from vol-archive-02 rehydrated 227 GiB in 11 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0052 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0052 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8852 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0052 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 5:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 21s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 241 objects in flight and none lost.
 
 ### Console shift 0053 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0053 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8853 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0053 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 248 live, 33 tombstoned, zero dangling references; the reclaimed space returned 1 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 255 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0054 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0054 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8854 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0054 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 262 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 36s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 60% headroom after the eu-central onboarding; growth trend projects the next expansion at week 4, tracked under the standing capacity ticket.
 
 ### Console shift 0055 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0055 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8855 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0055 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 276 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 283 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0056 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0056 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8856 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0056 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 290 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 7.
+Restore drill from vol-archive-02 rehydrated 297 GiB in 16 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0057 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0057 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8857 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0057 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 6:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 26s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 51 objects in flight and none lost.
 
 ### Console shift 0058 — gamma lane
 > **Triage proposal (2026-02-21 - #BAK-4921)** Tomas: override intervals that merely touch should remain separate segments; only strict overlap merges *(Superseded — reversed in the 2026-05 Snapsentry review; see the matching decision entry.)*
-Shift lead noted routine snapshot drift on gamma during console window 0058 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8858 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0058 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 58 live, 23 tombstoned, zero dangling references; the reclaimed space returned 11 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 65 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0059 — delta lane
 > **Triage proposal (2026-02-22 - #BAK-4927)** Dana: override suppression should use an inclusive window — an snapshot whose captured_ms equals a window's end_ms is still inside the override and must be suppressed (start_ms <= captured_ms <= end_ms) *(Superseded — reversed in the 2026-05 Snapsentry review; see the matching decision entry.)*
-Shift lead noted routine snapshot drift on delta during console window 0059 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8859 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0059 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 72 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 41s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 15% headroom after the eu-central onboarding; growth trend projects the next expansion at week 14, tracked under the standing capacity ticket.
 
 ### Console shift 0060 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0060 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8860 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0060 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 86 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 93 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0061 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0061 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8861 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0061 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 100 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 17.
+Restore drill from vol-archive-02 rehydrated 107 GiB in 21 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0062 — eta lane
 > **Triage proposal (2026-02-23 - #BAK-4929)** Tomas: total_snapshots should count only exported rows, so dismissed snapshots are excluded from total_snapshots as well as from the escalated export *(Superseded — reversed in the 2026-05 Snapsentry review; see the matching decision entry.)*
-Shift lead noted routine snapshot drift on eta during console window 0062 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8862 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0062 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 7:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 31s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 121 objects in flight and none lost.
 
 ### Console shift 0063 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0063 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8863 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0063 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 128 live, 13 tombstoned, zero dangling references; the reclaimed space returned 21 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 135 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0064 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0064 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8864 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0064 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 142 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 1s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 25% headroom after the eu-central onboarding; growth trend projects the next expansion at week 24, tracked under the standing capacity ticket.
 
 ### Console shift 0065 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0065 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8865 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0065 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 156 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 163 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0066 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0066 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8866 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0066 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 170 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 27.
+Restore drill from vol-archive-02 rehydrated 177 GiB in 26 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0067 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0067 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8867 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0067 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 8:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 36s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 191 objects in flight and none lost.
 
 ### Console shift 0068 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0068 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8868 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0068 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 198 live, 3 tombstoned, zero dangling references; the reclaimed space returned 31 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 205 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0069 — zeta lane
 > **Triage proposal (2026-02-24 - #BAK-4924)** Dana: chain edges should require BOTH a matching volume and two shared detector tokens *(Superseded — reversed in the 2026-05 Snapsentry review; see the matching decision entry.)*
-Shift lead noted routine snapshot drift on zeta during console window 0069 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8869 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0069 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 212 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 6s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 35% headroom after the eu-central onboarding; growth trend projects the next expansion at week 34, tracked under the standing capacity ticket.
 
 ### Console shift 0070 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0070 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8870 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0070 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 226 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 233 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0071 — theta lane
 > **Ops decision (2026-04-12 - #BAK-5031)** Nadia: chain_risk_score = sum of member severity ranks (critical=4, high=3) + distinct_volume_count + chain_span_ms // 100. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on theta during console window 0071 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8871 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0071 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 240 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 37.
+Restore drill from vol-archive-02 rehydrated 247 GiB in 31 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0072 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0072 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8872 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0072 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 9:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 41s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 261 objects in flight and none lost.
 
 ### Console shift 0073 — beta lane
 > **Ops decision (2026-04-16 - #BAK-5034)** Nadia: reach propagation — chain_reach_score = chain_risk_score + the single largest incoming edge_weight (best predecessor edge); the predecessor's own chain_reach_score is not accumulated. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on beta during console window 0073 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8873 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0073 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 268 live, 33 tombstoned, zero dangling references; the reclaimed space returned 41 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 275 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0074 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0074 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8874 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0074 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 282 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 11s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 45% headroom after the eu-central onboarding; growth trend projects the next expansion at week 44, tracked under the standing capacity ticket.
 
 ### Console shift 0075 — delta lane
 > **Ops decision (2026-04-20 - #BAK-5037)** Marta: reach propagation tie-break — when two paths reach the same strongest_path_score, keep the one with the fewer chains (smaller chain_reach_depth); if still tied, keep the earlier-discovered path. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on delta during console window 0075 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8875 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0075 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 296 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 43 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0076 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0076 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8876 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0076 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 50 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 47.
+Restore drill from vol-archive-02 rehydrated 57 GiB in 36 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0077 — zeta lane
 > **Ops decision (2026-04-24 - #BAK-5029)** Nadia: reach graph edge weight = 2 + shared_asset_count + 2 * shared_detector_token_count; there is no gap-based bonus term. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on zeta during console window 0077 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8877 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0077 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 10:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 1s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 71 objects in flight and none lost.
 
 ### Console shift 0078 — eta lane
 > **Ops decision (2026-04-06 - #BAK-5010)** Imran: captured_ms values are coerced to int after trimming, but rows whose value still will not parse are dropped from the canonical set and excluded from all totals. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on eta during console window 0078 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8878 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0078 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 78 live, 23 tombstoned, zero dangling references; the reclaimed space returned 51 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 85 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0079 — theta lane
 > **Ops decision (2026-04-28 - #BAK-5019)** Imran: dedupe tie-break — keep the row with highest captured_ms, then prefer dismissed=false over dismissed=true, then higher severity rank, then lexicographically larger normalized detector. Muted state is compared before severity rank. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on theta during console window 0079 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8879 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0079 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 92 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 16s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 55% headroom after the eu-central onboarding; growth trend projects the next expansion at week 2, tracked under the standing capacity ticket.
 
 ### Console shift 0080 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0080 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8880 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0080 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 106 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 113 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0081 — beta lane
 > **Ops decision (2026-04-14 - #BAK-5041)** Imran: detector handling — trim only leading and trailing whitespace; internal spacing between tokens is preserved exactly as received. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on beta during console window 0081 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8881 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0081 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 120 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 5.
+Restore drill from vol-archive-02 rehydrated 127 GiB in 41 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0082 — gamma lane
 > **Ops decision (2026-04-18 - #BAK-5043)** Marta: chain correlation edge rule — create an edge between two candidates only when their volume matches AND their detector token sets share at least two tokens (both conditions required). *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on gamma during console window 0082 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8882 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0082 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 2:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 6s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 141 objects in flight and none lost.
 
 ### Console shift 0083 — delta lane
 > **Ops decision (2026-04-22 - #BAK-5045)** Imran: dedupe tie-break — after highest captured_ms and severity rank, break remaining ties by the lexicographically SMALLER normalized detector, then the lexicographically smaller normalized volume. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on delta during console window 0083 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8883 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0083 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 148 live, 13 tombstoned, zero dangling references; the reclaimed space returned 9 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 155 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0084 — epsilon lane
 > **Ops decision (2026-04-08 - #BAK-5014)** Nadia: on an captured_ms tie during dedupe, prefer the non-dismissed row first, and only then compare severity rank. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on epsilon during console window 0084 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8884 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0084 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 162 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 21s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 10% headroom after the eu-central onboarding; growth trend projects the next expansion at week 12, tracked under the standing capacity ticket.
 
 ### Console shift 0085 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0085 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8885 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0085 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 176 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 183 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0086 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0086 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8886 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0086 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 190 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 15.
+Restore drill from vol-archive-02 rehydrated 197 GiB in 1 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0087 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0087 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8887 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0087 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 3:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 11s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 211 objects in flight and none lost.
 
 ### Console shift 0088 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0088 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8888 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0088 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 218 live, 3 tombstoned, zero dangling references; the reclaimed space returned 19 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 225 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0089 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0089 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8889 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0089 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 232 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 26s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 20% headroom after the eu-central onboarding; growth trend projects the next expansion at week 22, tracked under the standing capacity ticket.
 
 ### Console shift 0090 — gamma lane
 > **Ops decision (2026-04-10 - #BAK-5021)** Marta: override pressure divisors are 25 for all-scope overlap and 15 for severity-scope overlap. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on gamma during console window 0090 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8890 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0090 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 246 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 253 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0091 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0091 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8891 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0091 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 260 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 25.
+Restore drill from vol-archive-02 rehydrated 267 GiB in 6 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0092 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0092 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8892 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0092 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 4:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 16s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 281 objects in flight and none lost.
 
 ### Console shift 0093 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0093 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8893 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0093 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 288 live, 33 tombstoned, zero dangling references; the reclaimed space returned 29 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 295 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0094 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0094 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8894 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0094 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 42 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 31s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 30% headroom after the eu-central onboarding; growth trend projects the next expansion at week 32, tracked under the standing capacity ticket.
 
 ### Console shift 0095 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0095 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8895 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0095 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 56 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 63 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0096 — alpha lane
 > **Ops decision (2026-04-12 - #BAK-5027)** Imran: chain reach edge weight is 1 + shared_asset_count + shared_detector_token_count, with no gap bonus. *(Revised — see the 2026-05 decision log.)*
-Shift lead noted routine snapshot drift on alpha during console window 0096 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8896 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0096 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 70 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 35.
+Restore drill from vol-archive-02 rehydrated 77 GiB in 11 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0097 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0097 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8897 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0097 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 5:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 21s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 91 objects in flight and none lost.
 
 ### Console shift 0098 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0098 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8898 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0098 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 98 live, 23 tombstoned, zero dangling references; the reclaimed space returned 39 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 105 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0099 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0099 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8899 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0099 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 112 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 36s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 40% headroom after the eu-central onboarding; growth trend projects the next expansion at week 42, tracked under the standing capacity ticket.
 
 ### Console shift 0100 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0100 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8900 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0100 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 126 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 133 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0101 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0101 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8901 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0101 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 140 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 45.
+Restore drill from vol-archive-02 rehydrated 147 GiB in 16 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0102 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0102 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8902 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0102 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 6:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 26s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 161 objects in flight and none lost.
 
 ### Console shift 0103 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0103 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8903 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0103 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 168 live, 13 tombstoned, zero dangling references; the reclaimed space returned 49 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 175 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0104 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0104 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8904 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0104 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 182 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 41s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 50% headroom after the eu-central onboarding; growth trend projects the next expansion at week 52, tracked under the standing capacity ticket.
 
 ### Console shift 0105 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0105 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8905 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0105 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 196 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 203 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0106 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0106 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8906 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0106 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 210 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 3.
+Restore drill from vol-archive-02 rehydrated 217 GiB in 21 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0107 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0107 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8907 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0107 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 7:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 31s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 231 objects in flight and none lost.
 
 ### Console shift 0108 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0108 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8908 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0108 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 238 live, 3 tombstoned, zero dangling references; the reclaimed space returned 7 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 245 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0109 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0109 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8909 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0109 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 252 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 1s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 60% headroom after the eu-central onboarding; growth trend projects the next expansion at week 10, tracked under the standing capacity ticket.
 
 ### Console shift 0110 — eta lane
 > **Ops decision (2026-05-02 - #BAK-5102)** Nadia: captured_ms handling: coerce captured_ms to int (trim string whitespace before int conversion; invalid values become 0). Rows with an unparseable value are KEPT with the fallback — they are not dropped. This supersedes #BAK-4907 and revises the 2026-04 interim position in #BAK-5010.
-Shift lead noted routine snapshot drift on eta during console window 0110 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8910 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0110 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 266 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 273 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0111 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0111 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8911 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0111 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 280 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 13.
+Restore drill from vol-archive-02 rehydrated 287 GiB in 26 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0112 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0112 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8912 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0112 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 8:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 36s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 41 objects in flight and none lost.
 
 ### Console shift 0113 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0113 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8913 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0113 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 48 live, 33 tombstoned, zero dangling references; the reclaimed space returned 17 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 55 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0114 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0114 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8914 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0114 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 62 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 6s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 15% headroom after the eu-central onboarding; growth trend projects the next expansion at week 20, tracked under the standing capacity ticket.
 
 ### Console shift 0115 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0115 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8915 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0115 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 76 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 83 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0116 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0116 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8916 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0116 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 90 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 23.
+Restore drill from vol-archive-02 rehydrated 97 GiB in 31 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0117 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0117 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8917 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0117 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 9:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 41s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 111 objects in flight and none lost.
 
 ### Console shift 0118 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0118 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8918 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0118 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 118 live, 23 tombstoned, zero dangling references; the reclaimed space returned 27 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 125 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0119 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0119 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8919 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0119 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 132 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 11s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 25% headroom after the eu-central onboarding; growth trend projects the next expansion at week 30, tracked under the standing capacity ticket.
 
 ### Console shift 0120 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0120 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8920 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0120 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 146 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 153 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0121 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0121 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8921 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0121 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 160 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 33.
+Restore drill from vol-archive-02 rehydrated 167 GiB in 36 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0122 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0122 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8922 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0122 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 10:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 1s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 181 objects in flight and none lost.
 
 ### Console shift 0123 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0123 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8923 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0123 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 188 live, 13 tombstoned, zero dangling references; the reclaimed space returned 37 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 195 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0124 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0124 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8924 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0124 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 202 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 16s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 35% headroom after the eu-central onboarding; growth trend projects the next expansion at week 40, tracked under the standing capacity ticket.
 
 ### Console shift 0125 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0125 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8925 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0125 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 216 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 223 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0126 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0126 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8926 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0126 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 230 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 43.
+Restore drill from vol-archive-02 rehydrated 237 GiB in 41 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0127 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0127 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8927 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0127 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 2:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 6s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 251 objects in flight and none lost.
 
 ### Console shift 0128 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0128 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8928 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0128 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 258 live, 3 tombstoned, zero dangling references; the reclaimed space returned 47 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 265 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0129 — beta lane
 > **Ops decision (2026-05-02 - #BAK-5103)** Nadia: severity handling: strip surrounding whitespace then lowercase severity strings before counting and signal. volume handling: strip surrounding whitespace then lowercase volume names before grouping. dismissed handling: treat boolean-like strings ('true','1','yes') as true; every other string is false. This supersedes #BAK-4911.
-Shift lead noted routine snapshot drift on beta during console window 0129 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8929 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0129 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 272 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 21s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 45% headroom after the eu-central onboarding; growth trend projects the next expansion at week 50, tracked under the standing capacity ticket.
 
 ### Console shift 0130 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0130 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8930 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0130 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 286 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 293 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0131 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0131 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8931 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0131 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 40 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 1.
+Restore drill from vol-archive-02 rehydrated 47 GiB in 1 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0132 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0132 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8932 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0132 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 3:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 11s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 61 objects in flight and none lost.
 
 ### Console shift 0133 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0133 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8933 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0133 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 68 live, 33 tombstoned, zero dangling references; the reclaimed space returned 5 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 75 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0134 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0134 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8934 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0134 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 82 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 26s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 55% headroom after the eu-central onboarding; growth trend projects the next expansion at week 8, tracked under the standing capacity ticket.
 
 ### Console shift 0135 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0135 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8935 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0135 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 96 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 103 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0136 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0136 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8936 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0136 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 110 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 11.
+Restore drill from vol-archive-02 rehydrated 117 GiB in 6 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0137 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0137 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8937 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0137 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 4:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 16s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 131 objects in flight and none lost.
 
 ### Console shift 0138 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0138 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8938 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0138 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 138 live, 23 tombstoned, zero dangling references; the reclaimed space returned 15 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 145 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0139 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0139 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8939 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0139 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 152 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 31s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 10% headroom after the eu-central onboarding; growth trend projects the next expansion at week 18, tracked under the standing capacity ticket.
 
 ### Console shift 0140 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0140 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8940 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0140 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 166 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 173 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0141 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0141 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8941 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0141 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 180 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 21.
+Restore drill from vol-archive-02 rehydrated 187 GiB in 11 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0142 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0142 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8942 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0142 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 5:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 21s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 201 objects in flight and none lost.
 
 ### Console shift 0143 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0143 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8943 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0143 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 208 live, 13 tombstoned, zero dangling references; the reclaimed space returned 25 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 215 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0144 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0144 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8944 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0144 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 222 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 36s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 20% headroom after the eu-central onboarding; growth trend projects the next expansion at week 28, tracked under the standing capacity ticket.
 
 ### Console shift 0145 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0145 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8945 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0145 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 236 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 243 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0146 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0146 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8946 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0146 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 250 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 31.
+Restore drill from vol-archive-02 rehydrated 257 GiB in 16 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0147 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0147 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8947 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0147 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 6:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 26s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 271 objects in flight and none lost.
 
 ### Console shift 0148 — epsilon lane
 > **Ops decision (2026-05-03 - #BAK-5105)** Imran: detector handling: normalize detector by collapsing internal whitespace to single spaces before tie-breaks and output.
-Shift lead noted routine snapshot drift on epsilon during console window 0148 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8948 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0148 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 278 live, 3 tombstoned, zero dangling references; the reclaimed space returned 35 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 285 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0149 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0149 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8949 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0149 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 292 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 41s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 30% headroom after the eu-central onboarding; growth trend projects the next expansion at week 38, tracked under the standing capacity ticket.
 
 ### Console shift 0150 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0150 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8950 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0150 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 46 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 53 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0151 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0151 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8951 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0151 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 60 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 41.
+Restore drill from vol-archive-02 rehydrated 67 GiB in 21 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0152 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0152 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8952 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0152 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 7:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 31s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 81 objects in flight and none lost.
 
 ### Console shift 0153 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0153 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8953 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0153 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 88 live, 33 tombstoned, zero dangling references; the reclaimed space returned 45 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 95 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0154 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0154 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8954 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0154 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 102 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 1s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 40% headroom after the eu-central onboarding; growth trend projects the next expansion at week 48, tracked under the standing capacity ticket.
 
 ### Console shift 0155 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0155 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8955 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0155 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 116 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 123 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0156 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0156 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8956 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0156 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 130 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 51.
+Restore drill from vol-archive-02 rehydrated 137 GiB in 26 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0157 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0157 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8957 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0157 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 8:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 36s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 151 objects in flight and none lost.
 
 ### Console shift 0158 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0158 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8958 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0158 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 158 live, 23 tombstoned, zero dangling references; the reclaimed space returned 3 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 165 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0159 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0159 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8959 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0159 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 172 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 6s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 50% headroom after the eu-central onboarding; growth trend projects the next expansion at week 6, tracked under the standing capacity ticket.
 
 ### Console shift 0160 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0160 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8960 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0160 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 186 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 193 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0161 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0161 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8961 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0161 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 200 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 9.
+Restore drill from vol-archive-02 rehydrated 207 GiB in 31 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0162 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0162 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8962 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0162 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 9:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 41s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 221 objects in flight and none lost.
 
 ### Console shift 0163 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0163 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8963 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0163 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 228 live, 13 tombstoned, zero dangling references; the reclaimed space returned 13 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 235 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0164 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0164 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8964 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0164 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 242 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 11s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 60% headroom after the eu-central onboarding; growth trend projects the next expansion at week 16, tracked under the standing capacity ticket.
 
 ### Console shift 0165 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0165 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8965 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0165 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 256 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 263 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0166 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0166 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8966 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0166 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 270 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 19.
+Restore drill from vol-archive-02 rehydrated 277 GiB in 36 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0167 — theta lane
 > **Ops decision (2026-05-03 - #BAK-5106)** Imran: dedupe: collapse duplicate snapshot_id rows, keeping the row with highest captured_ms; tie-break by higher severity rank (critical > high > medium > low), then prefer dismissed=false over dismissed=true, then lexicographically larger normalized detector, then lexicographically larger normalized volume. Severity rank is compared before dismissed state — this supersedes #BAK-4914 and revises the ordering in #BAK-5014.
-Shift lead noted routine snapshot drift on theta during console window 0167 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8967 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0167 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 10:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 1s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 291 objects in flight and none lost.
 
 ### Console shift 0168 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0168 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8968 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0168 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 298 live, 3 tombstoned, zero dangling references; the reclaimed space returned 23 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 45 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0169 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0169 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8969 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0169 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 52 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 16s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 15% headroom after the eu-central onboarding; growth trend projects the next expansion at week 26, tracked under the standing capacity ticket.
 
 ### Console shift 0170 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0170 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8970 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0170 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 66 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 73 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0171 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0171 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8971 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0171 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 80 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 29.
+Restore drill from vol-archive-02 rehydrated 87 GiB in 41 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0172 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0172 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8972 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0172 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 2:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 6s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 101 objects in flight and none lost.
 
 ### Console shift 0173 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0173 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8973 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0173 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 108 live, 33 tombstoned, zero dangling references; the reclaimed space returned 33 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 115 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0174 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0174 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8974 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0174 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 122 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 21s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 25% headroom after the eu-central onboarding; growth trend projects the next expansion at week 36, tracked under the standing capacity ticket.
 
 ### Console shift 0175 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0175 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8975 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0175 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 136 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 143 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0176 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0176 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8976 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0176 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 150 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 39.
+Restore drill from vol-archive-02 rehydrated 157 GiB in 1 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0177 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0177 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8977 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0177 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 3:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 11s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 171 objects in flight and none lost.
 
 ### Console shift 0178 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0178 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8978 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0178 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 178 live, 23 tombstoned, zero dangling references; the reclaimed space returned 43 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 185 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0179 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0179 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8979 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0179 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 192 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 26s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 35% headroom after the eu-central onboarding; growth trend projects the next expansion at week 46, tracked under the standing capacity ticket.
 
 ### Console shift 0180 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0180 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8980 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0180 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 206 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 213 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0181 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0181 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8981 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0181 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 220 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 49.
+Restore drill from vol-archive-02 rehydrated 227 GiB in 6 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0182 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0182 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8982 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0182 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 4:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 16s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 241 objects in flight and none lost.
 
 ### Console shift 0183 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0183 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8983 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0183 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 248 live, 13 tombstoned, zero dangling references; the reclaimed space returned 1 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 255 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0184 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0184 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8984 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0184 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 262 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 31s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 45% headroom after the eu-central onboarding; growth trend projects the next expansion at week 4, tracked under the standing capacity ticket.
 
 ### Console shift 0185 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0185 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8985 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0185 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 276 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 283 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0186 — gamma lane
 > **Ops decision (2026-05-04 - #BAK-5108)** Marta: override scope: override severity_scope uses str(...).strip().lower(); supported values are all, high, critical. Rows whose normalized severity_scope is anything else (for example debug or an empty string) are DROPPED ENTIRELY before compaction — they contribute nothing to compacted windows, matching, pressure scores, or the override compaction checksum. This supersedes #BAK-4917.
-Shift lead noted routine snapshot drift on gamma during console window 0186 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8986 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0186 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 290 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 7.
+Restore drill from vol-archive-02 rehydrated 297 GiB in 11 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0187 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0187 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8987 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0187 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 5:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 21s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 51 objects in flight and none lost.
 
 ### Console shift 0188 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0188 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8988 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0188 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 58 live, 3 tombstoned, zero dangling references; the reclaimed space returned 11 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 65 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0189 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0189 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8989 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0189 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 72 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 36s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 55% headroom after the eu-central onboarding; growth trend projects the next expansion at week 14, tracked under the standing capacity ticket.
 
 ### Console shift 0190 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0190 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8990 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0190 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 86 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 93 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0191 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0191 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8991 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0191 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 100 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 17.
+Restore drill from vol-archive-02 rehydrated 107 GiB in 16 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0192 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0192 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8992 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0192 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 6:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 26s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 121 objects in flight and none lost.
 
 ### Console shift 0193 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0193 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8993 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0193 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 128 live, 33 tombstoned, zero dangling references; the reclaimed space returned 21 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 135 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0194 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0194 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-8994 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0194 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 142 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 41s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 10% headroom after the eu-central onboarding; growth trend projects the next expansion at week 24, tracked under the standing capacity ticket.
 
 ### Console shift 0195 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0195 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-8995 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0195 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 156 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 163 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0196 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0196 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8996 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0196 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 170 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 27.
+Restore drill from vol-archive-02 rehydrated 177 GiB in 21 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0197 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0197 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-8997 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0197 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 7:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 31s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 191 objects in flight and none lost.
 
 ### Console shift 0198 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0198 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8998 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0198 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 198 live, 23 tombstoned, zero dangling references; the reclaimed space returned 31 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 205 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0199 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0199 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-8999 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0199 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 212 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 1s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 20% headroom after the eu-central onboarding; growth trend projects the next expansion at week 34, tracked under the standing capacity ticket.
 
 ### Console shift 0200 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0200 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9000 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0200 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 226 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 233 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0201 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0201 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9001 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0201 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 240 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 37.
+Restore drill from vol-archive-02 rehydrated 247 GiB in 26 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0202 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0202 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9002 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0202 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 8:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 36s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 261 objects in flight and none lost.
 
 ### Console shift 0203 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0203 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9003 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0203 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 268 live, 13 tombstoned, zero dangling references; the reclaimed space returned 41 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 275 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0204 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0204 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9004 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0204 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 282 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 6s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 30% headroom after the eu-central onboarding; growth trend projects the next expansion at week 44, tracked under the standing capacity ticket.
 
 ### Console shift 0205 — zeta lane
 > **Ops decision (2026-05-04 - #BAK-5109)** Marta: override windows: override windows come from /app/data/dismissal_overrides.json; normalize volume and severity_scope, coerce start_ms/end_ms with captured_ms rules, drop end_ms<=start_ms, then sort and compact per (volume,severity_scope). Merge rule: merge when next.start_ms <= current.end_ms, so touching intervals merge. An equivalent implementation starts a new segment only when next.start_ms > current.end_ms; that '>' branch does not mean touching intervals remain separate. This supersedes #BAK-4921.
-Shift lead noted routine snapshot drift on zeta during console window 0205 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9005 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0205 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 296 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 43 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0206 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0206 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9006 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0206 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 50 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 47.
+Restore drill from vol-archive-02 rehydrated 57 GiB in 31 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0207 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0207 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9007 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0207 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 9:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 41s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 71 objects in flight and none lost.
 
 ### Console shift 0208 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0208 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9008 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0208 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 78 live, 3 tombstoned, zero dangling references; the reclaimed space returned 51 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 85 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0209 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0209 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9009 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0209 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 92 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 11s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 40% headroom after the eu-central onboarding; growth trend projects the next expansion at week 2, tracked under the standing capacity ticket.
 
 ### Console shift 0210 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0210 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9010 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0210 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 106 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 113 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0211 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0211 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9011 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0211 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 120 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 5.
+Restore drill from vol-archive-02 rehydrated 127 GiB in 36 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0212 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0212 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9012 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0212 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 10:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 1s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 141 objects in flight and none lost.
 
 ### Console shift 0213 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0213 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9013 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0213 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 148 live, 33 tombstoned, zero dangling references; the reclaimed space returned 9 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 155 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0214 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0214 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9014 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0214 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 162 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 16s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 50% headroom after the eu-central onboarding; growth trend projects the next expansion at week 12, tracked under the standing capacity ticket.
 
 ### Console shift 0215 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0215 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9015 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0215 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 176 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 183 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0216 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0216 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9016 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0216 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 190 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 15.
+Restore drill from vol-archive-02 rehydrated 197 GiB in 41 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0217 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0217 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9017 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0217 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 2:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 6s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 211 objects in flight and none lost.
 
 ### Console shift 0218 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0218 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9018 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0218 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 218 live, 23 tombstoned, zero dangling references; the reclaimed space returned 19 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 225 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0219 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0219 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9019 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0219 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 232 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 21s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 60% headroom after the eu-central onboarding; growth trend projects the next expansion at week 22, tracked under the standing capacity ticket.
 
 ### Console shift 0220 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0220 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9020 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0220 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 246 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 253 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0221 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0221 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9021 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0221 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 260 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 25.
+Restore drill from vol-archive-02 rehydrated 267 GiB in 1 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0222 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0222 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9022 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0222 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 3:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 11s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 281 objects in flight and none lost.
 
 ### Console shift 0223 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0223 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9023 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0223 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 288 live, 13 tombstoned, zero dangling references; the reclaimed space returned 29 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 295 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0224 — alpha lane
 > **Ops decision (2026-05-05 - #BAK-5111)** Nadia: override matching: an signal candidate is suppressed when start_ms <= captured_ms < end_ms for same normalized volume and matching severity_scope in {all, candidate.severity}. The window is half-open: an snapshot whose captured_ms equals end_ms is NOT suppressed. This supersedes #BAK-4927.
-Shift lead noted routine snapshot drift on alpha during console window 0224 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9024 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0224 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 42 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 26s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 15% headroom after the eu-central onboarding; growth trend projects the next expansion at week 32, tracked under the standing capacity ticket.
 
 ### Console shift 0225 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0225 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9025 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0225 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 56 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 63 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0226 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0226 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9026 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0226 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 70 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 35.
+Restore drill from vol-archive-02 rehydrated 77 GiB in 6 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0227 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0227 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9027 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0227 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 4:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 16s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 91 objects in flight and none lost.
 
 ### Console shift 0228 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0228 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9028 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0228 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 98 live, 3 tombstoned, zero dangling references; the reclaimed space returned 39 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 105 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0229 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0229 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9029 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0229 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 112 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 31s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 25% headroom after the eu-central onboarding; growth trend projects the next expansion at week 42, tracked under the standing capacity ticket.
 
 ### Console shift 0230 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0230 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9030 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0230 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 126 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 133 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0231 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0231 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9031 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0231 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 140 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 45.
+Restore drill from vol-archive-02 rehydrated 147 GiB in 11 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0232 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0232 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9032 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0232 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 5:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 21s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 161 objects in flight and none lost.
 
 ### Console shift 0233 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0233 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9033 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0233 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 168 live, 33 tombstoned, zero dangling references; the reclaimed space returned 49 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 175 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0234 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0234 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9034 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0234 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 182 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 36s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 35% headroom after the eu-central onboarding; growth trend projects the next expansion at week 52, tracked under the standing capacity ticket.
 
 ### Console shift 0235 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0235 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9035 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0235 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 196 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 203 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0236 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0236 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9036 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0236 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 210 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 3.
+Restore drill from vol-archive-02 rehydrated 217 GiB in 16 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0237 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0237 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9037 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0237 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 6:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 26s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 231 objects in flight and none lost.
 
 ### Console shift 0238 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0238 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9038 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0238 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 238 live, 23 tombstoned, zero dangling references; the reclaimed space returned 7 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 245 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0239 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0239 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9039 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0239 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 252 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 41s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 45% headroom after the eu-central onboarding; growth trend projects the next expansion at week 10, tracked under the standing capacity ticket.
 
 ### Console shift 0240 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0240 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9040 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0240 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 266 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 273 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0241 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0241 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9041 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0241 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 280 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 13.
+Restore drill from vol-archive-02 rehydrated 287 GiB in 21 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0242 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0242 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9042 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0242 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 7:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 31s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 41 objects in flight and none lost.
 
 ### Console shift 0243 — delta lane
 > **Ops decision (2026-05-05 - #BAK-5112)** Nadia: totals and export: total_snapshots — count canonical deduped snapshots (dismissed rows remain in totals; dismissed affects only the escalated export, never total_snapshots). This supersedes #BAK-4929. Escalated export — include high and critical only, exclude dismissed=true, exclude candidates suppressed by override_match_rule, then annotate chains and directed reach before final sorting.
-Shift lead noted routine snapshot drift on delta during console window 0243 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9043 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0243 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 48 live, 13 tombstoned, zero dangling references; the reclaimed space returned 17 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 55 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0244 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0244 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9044 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0244 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 62 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 1s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 55% headroom after the eu-central onboarding; growth trend projects the next expansion at week 20, tracked under the standing capacity ticket.
 
 ### Console shift 0245 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0245 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9045 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0245 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 76 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 83 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0246 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0246 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9046 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0246 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 90 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 23.
+Restore drill from vol-archive-02 rehydrated 97 GiB in 26 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0247 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0247 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9047 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0247 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 8:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 36s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 111 objects in flight and none lost.
 
 ### Console shift 0248 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0248 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9048 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0248 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 118 live, 3 tombstoned, zero dangling references; the reclaimed space returned 27 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 125 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0249 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0249 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9049 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0249 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 132 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 6s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 10% headroom after the eu-central onboarding; growth trend projects the next expansion at week 30, tracked under the standing capacity ticket.
 
 ### Console shift 0250 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0250 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9050 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0250 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 146 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 153 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0251 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0251 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9051 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0251 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 160 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 33.
+Restore drill from vol-archive-02 rehydrated 167 GiB in 31 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0252 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0252 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9052 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0252 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 9:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 41s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 181 objects in flight and none lost.
 
 ### Console shift 0253 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0253 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9053 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0253 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 188 live, 33 tombstoned, zero dangling references; the reclaimed space returned 37 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 195 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0254 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0254 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9054 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0254 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 202 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 11s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 20% headroom after the eu-central onboarding; growth trend projects the next expansion at week 40, tracked under the standing capacity ticket.
 
 ### Console shift 0255 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0255 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9055 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0255 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 216 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 223 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0256 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0256 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9056 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0256 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 230 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 43.
+Restore drill from vol-archive-02 rehydrated 237 GiB in 36 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0257 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0257 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9057 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0257 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 10:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 1s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 251 objects in flight and none lost.
 
 ### Console shift 0258 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0258 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9058 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0258 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 258 live, 23 tombstoned, zero dangling references; the reclaimed space returned 47 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 265 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0259 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0259 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9059 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0259 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 272 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 16s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 30% headroom after the eu-central onboarding; growth trend projects the next expansion at week 50, tracked under the standing capacity ticket.
 
 ### Console shift 0260 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0260 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9060 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0260 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 286 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 293 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0261 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0261 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9061 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0261 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 40 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 1.
+Restore drill from vol-archive-02 rehydrated 47 GiB in 41 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0262 — eta lane
 > **Ops decision (2026-05-06 - #BAK-5114)** Imran: override pressure: for each included signal row, compute all_overlap_ms using [captured_ms-120, captured_ms+1) against scope=all windows and severity_overlap_ms against scope=event severity windows; score=(all_overlap_ms//82)+(severity_overlap_ms//84). The 82/84 divisors are final and revise the interim 25/15 pair in #BAK-5021.
-Shift lead noted routine snapshot drift on eta during console window 0262 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9062 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0262 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 2:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 6s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 61 objects in flight and none lost.
 
 ### Console shift 0263 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0263 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9063 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0263 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 68 live, 13 tombstoned, zero dangling references; the reclaimed space returned 5 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 75 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0264 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0264 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9064 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0264 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 82 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 21s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 40% headroom after the eu-central onboarding; growth trend projects the next expansion at week 8, tracked under the standing capacity ticket.
 
 ### Console shift 0265 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0265 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9065 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0265 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 96 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 103 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0266 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0266 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9066 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0266 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 110 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 11.
+Restore drill from vol-archive-02 rehydrated 117 GiB in 1 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0267 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0267 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9067 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0267 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 3:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 11s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 131 objects in flight and none lost.
 
 ### Console shift 0268 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0268 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9068 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0268 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 138 live, 3 tombstoned, zero dangling references; the reclaimed space returned 15 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 145 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0269 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0269 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9069 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0269 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 152 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 26s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 50% headroom after the eu-central onboarding; growth trend projects the next expansion at week 18, tracked under the standing capacity ticket.
 
 ### Console shift 0270 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0270 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9070 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0270 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 166 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 173 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0271 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0271 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9071 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0271 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 180 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 21.
+Restore drill from vol-archive-02 rehydrated 187 GiB in 6 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0272 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0272 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9072 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0272 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 4:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 16s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 201 objects in flight and none lost.
 
 ### Console shift 0273 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0273 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9073 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0273 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 208 live, 33 tombstoned, zero dangling references; the reclaimed space returned 25 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 215 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0274 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0274 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9074 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0274 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 222 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 31s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 60% headroom after the eu-central onboarding; growth trend projects the next expansion at week 28, tracked under the standing capacity ticket.
 
 ### Console shift 0275 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0275 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9075 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0275 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 236 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 243 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0276 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0276 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9076 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0276 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 250 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 31.
+Restore drill from vol-archive-02 rehydrated 257 GiB in 11 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0277 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0277 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9077 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0277 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 5:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 21s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 271 objects in flight and none lost.
 
 ### Console shift 0278 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0278 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9078 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0278 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 278 live, 23 tombstoned, zero dangling references; the reclaimed space returned 35 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 285 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0279 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0279 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9079 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0279 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 292 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 36s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 15% headroom after the eu-central onboarding; growth trend projects the next expansion at week 38, tracked under the standing capacity ticket.
 
 ### Console shift 0280 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0280 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9080 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0280 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 46 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 53 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0281 — beta lane
 > **Ops decision (2026-05-07 - #BAK-5116)** Marta: chain correlation input: final undismissed, unsuppressed high/critical signal candidates before final sorting. Signature tokens: lowercase normalized detector split on whitespace into a set. Edge rule: create an undirected edge between two candidates when abs(captured_ms difference) <= 600 and either volume matches or their detector token sets share at least two tokens. chains are full connected components of the undirected graph, not only direct neighbors. This supersedes #BAK-4924.
-Shift lead noted routine snapshot drift on beta during console window 0281 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9081 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0281 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 60 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 41.
+Restore drill from vol-archive-02 rehydrated 67 GiB in 16 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0282 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0282 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9082 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0282 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 6:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 26s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 81 objects in flight and none lost.
 
 ### Console shift 0283 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0283 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9083 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0283 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 88 live, 13 tombstoned, zero dangling references; the reclaimed space returned 45 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 95 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0284 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0284 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9084 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0284 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 102 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 41s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 25% headroom after the eu-central onboarding; growth trend projects the next expansion at week 48, tracked under the standing capacity ticket.
 
 ### Console shift 0285 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0285 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9085 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0285 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 116 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 123 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0286 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0286 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9086 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0286 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 130 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 51.
+Restore drill from vol-archive-02 rehydrated 137 GiB in 21 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0287 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0287 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9087 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0287 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 7:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 31s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 151 objects in flight and none lost.
 
 ### Console shift 0288 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0288 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9088 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0288 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 158 live, 3 tombstoned, zero dangling references; the reclaimed space returned 3 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 165 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0289 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0289 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9089 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0289 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 172 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 1s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 35% headroom after the eu-central onboarding; growth trend projects the next expansion at week 6, tracked under the standing capacity ticket.
 
 ### Console shift 0290 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0290 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9090 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0290 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 186 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 193 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0291 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0291 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9091 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0291 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 200 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 9.
+Restore drill from vol-archive-02 rehydrated 207 GiB in 26 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0292 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0292 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9092 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0292 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 8:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 36s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 221 objects in flight and none lost.
 
 ### Console shift 0293 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0293 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9093 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0293 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 228 live, 33 tombstoned, zero dangling references; the reclaimed space returned 13 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 235 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0294 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0294 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9094 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0294 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 242 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 6s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 45% headroom after the eu-central onboarding; growth trend projects the next expansion at week 16, tracked under the standing capacity ticket.
 
 ### Console shift 0295 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0295 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9095 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0295 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 256 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 263 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0296 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0296 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9096 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0296 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 270 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 19.
+Restore drill from vol-archive-02 rehydrated 277 GiB in 31 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0297 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0297 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9097 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0297 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 9:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 41s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 291 objects in flight and none lost.
 
 ### Console shift 0298 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0298 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9098 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0298 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 298 live, 23 tombstoned, zero dangling references; the reclaimed space returned 23 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 45 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0299 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0299 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9099 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0299 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 52 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 11s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 55% headroom after the eu-central onboarding; growth trend projects the next expansion at week 26, tracked under the standing capacity ticket.
 
 ### Console shift 0300 — epsilon lane
 > **Ops decision (2026-05-07 - #BAK-5117)** Marta: chain fields: chain_snapshot_ids — component snapshot ids converted to strings and sorted lexicographically. chain_size — number of rows in the connected component. chain_span_ms — maximum captured_ms minus minimum captured_ms in the component. chain_risk_score — sum severity ranks (critical=4, high=3) + 2*distinct_volume_count + chain_span_ms//60.
-Shift lead noted routine snapshot drift on epsilon during console window 0300 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9100 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0300 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 66 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 73 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0301 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0301 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9101 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0301 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 80 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 29.
+Restore drill from vol-archive-02 rehydrated 87 GiB in 36 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0302 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0302 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9102 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0302 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 10:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 1s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 101 objects in flight and none lost.
 
 ### Console shift 0303 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0303 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9103 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0303 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 108 live, 13 tombstoned, zero dangling references; the reclaimed space returned 33 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 115 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0304 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0304 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9104 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0304 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 122 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 16s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 10% headroom after the eu-central onboarding; growth trend projects the next expansion at week 36, tracked under the standing capacity ticket.
 
 ### Console shift 0305 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0305 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9105 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0305 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 136 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 143 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0306 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0306 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9106 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0306 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 150 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 39.
+Restore drill from vol-archive-02 rehydrated 157 GiB in 41 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0307 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0307 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9107 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0307 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 2:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 6s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 171 objects in flight and none lost.
 
 ### Console shift 0308 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0308 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9108 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0308 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 178 live, 3 tombstoned, zero dangling references; the reclaimed space returned 43 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 185 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0309 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0309 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9109 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0309 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 192 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 21s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 20% headroom after the eu-central onboarding; growth trend projects the next expansion at week 46, tracked under the standing capacity ticket.
 
 ### Console shift 0310 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0310 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9110 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0310 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 206 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 213 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0311 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0311 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9111 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0311 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 220 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 49.
+Restore drill from vol-archive-02 rehydrated 227 GiB in 1 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0312 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0312 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9112 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0312 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 3:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 11s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 241 objects in flight and none lost.
 
 ### Console shift 0313 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0313 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9113 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0313 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 248 live, 33 tombstoned, zero dangling references; the reclaimed space returned 1 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 255 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0314 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0314 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9114 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0314 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 262 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 26s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 30% headroom after the eu-central onboarding; growth trend projects the next expansion at week 4, tracked under the standing capacity ticket.
 
 ### Console shift 0315 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0315 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9115 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0315 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 276 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 283 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0316 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0316 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9116 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0316 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 290 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 7.
+Restore drill from vol-archive-02 rehydrated 297 GiB in 6 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0317 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0317 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9117 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0317 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 4:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 16s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 51 objects in flight and none lost.
 
 ### Console shift 0318 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0318 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9118 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0318 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 58 live, 23 tombstoned, zero dangling references; the reclaimed space returned 11 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 65 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0319 — theta lane
 > **Ops decision (2026-05-08 - #BAK-5119)** Nadia: reach graph nodes: one node per chain; start_ms=min member captured_ms, end_ms=max member captured_ms, assets=set of member volumes, tokens=union of lowercase whitespace-split member detectors. Node order: ascending (start_ms, end_ms, chain_id). Edge rule: directed predecessor->current when gap_ms=current.start_ms-predecessor.end_ms is in [1,3000] and chains share at least one asset or detector token. Edge weight: 1 + 2*shared_asset_count + shared_detector_token_count + max(0, 3-gap_ms//1000). This weighting revises #BAK-5027, which lacked the doubled asset term and the gap bonus.
-Shift lead noted routine snapshot drift on theta during console window 0319 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9119 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0319 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 72 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 31s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 40% headroom after the eu-central onboarding; growth trend projects the next expansion at week 14, tracked under the standing capacity ticket.
 
 ### Console shift 0320 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0320 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9120 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0320 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 86 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 93 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 > **Incident note (2026-04-11 - #SNP-4401)** Nadia: broken rollup reads event['captured_at'] instead of event['captured_ms'], so signal timestamps collapse to zero in escalated output.
 
 ### Console shift 0321 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0321 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9121 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0321 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 100 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 17.
+Restore drill from vol-archive-02 rehydrated 107 GiB in 11 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0322 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0322 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9122 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0322 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 5:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 21s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 121 objects in flight and none lost.
 
 ### Console shift 0323 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0323 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9123 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0323 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 128 live, 13 tombstoned, zero dangling references; the reclaimed space returned 21 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 135 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0324 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0324 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9124 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0324 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 142 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 36s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 50% headroom after the eu-central onboarding; growth trend projects the next expansion at week 24, tracked under the standing capacity ticket.
 
 ### Console shift 0325 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0325 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9125 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0325 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 156 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 163 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0326 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0326 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9126 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0326 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 170 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 27.
+Restore drill from vol-archive-02 rehydrated 177 GiB in 16 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0327 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0327 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9127 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0327 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 6:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 26s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 191 objects in flight and none lost.
 
 ### Console shift 0328 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0328 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9128 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0328 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 198 live, 3 tombstoned, zero dangling references; the reclaimed space returned 31 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 205 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0329 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0329 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9129 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0329 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 212 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 41s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 60% headroom after the eu-central onboarding; growth trend projects the next expansion at week 34, tracked under the standing capacity ticket.
 
 ### Console shift 0330 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0330 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9130 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0330 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 226 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 233 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0331 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0331 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9131 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0331 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 240 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 37.
+Restore drill from vol-archive-02 rehydrated 247 GiB in 21 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0332 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0332 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9132 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0332 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 7:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 31s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 261 objects in flight and none lost.
 
 ### Console shift 0333 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0333 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9133 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0333 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 268 live, 33 tombstoned, zero dangling references; the reclaimed space returned 41 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 275 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0334 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0334 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9134 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0334 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 282 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 1s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 15% headroom after the eu-central onboarding; growth trend projects the next expansion at week 44, tracked under the standing capacity ticket.
 
 ### Console shift 0335 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0335 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9135 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0335 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 296 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 43 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0336 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0336 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9136 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0336 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 50 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 47.
+Restore drill from vol-archive-02 rehydrated 57 GiB in 26 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0337 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0337 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9137 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0337 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 8:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 36s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 71 objects in flight and none lost.
 
 ### Console shift 0338 — gamma lane
 > **Ops decision (2026-05-08 - #BAK-5120)** Nadia: reach propagation: strongest_path_score — chain_risk_score for a source; otherwise maximize predecessor.chain_reach_score + edge_weight + current.chain_risk_score across incoming edges, also allowing the current chain alone. Tie break: for equal strongest_path_score choose lexicographically smallest tuple of chain_id values in the complete path. chain_reach_path — chosen chain_id path including current chain; chain_reach_depth — len(chain_reach_path)-1.
@@ -1482,462 +1482,462 @@ Shift handover noted the escalation queue was being read without any notion of s
 > **Ops decision (2026-05-09 - #BAK-5123)** Nadia: escalation ledger reporting. critical_escalation_ids — snapshot_id values of the escalation-critical rows as strings, sorted lexicographically ascending (not in export order). critical_escalation_count — their number. max_escalation_pressure — the largest escalation_pressure over all signal rows, escalation-critical or not, and 0 when there are no signal rows. escalation_ledger_checksum — SHA-256 hex digest of one line per signal row in export order, each `snapshot_id|escalation_pressure|c|carry_out` where c is 1 for an escalation-critical row and 0 otherwise, lines joined by a single newline with no trailing newline, hashed over the UTF-8 encoding.
 > **Board decision (2026-06-02 - #BAK-5390)** Halvorsen: near dismissal probe. Each escalated signal carries a NEAR probe over the half-open range [captured_ms - 120, captured_ms + 1), measured separately against the `all`-scoped dismissal windows and against the windows recorded for the signal's own severity scope. `override_pressure_score = (all_overlap_ms // 82) + ceil(severity_overlap_ms / 84)`. The all half keeps its FLOOR and the scoped half ROUNDS UP. ROUNDING: all_overlap_ms // 82 = FLOOR. ROUNDING: severity_overlap_ms // 84 = CEIL.
 > **Board decision (2026-06-02 - #BAK-5392)** Halvorsen: wide dismissal probe. The WIDE probe uses the range [captured_ms - 300, captured_ms + 1) and its halves round in the OPPOSITE directions to the near probe: `wide_pressure_score = ceil(wide_all_overlap_ms / 86) + (wide_severity_overlap_ms // 88)`. No direction here may be inferred from the near family. `pressure_index = override_pressure_score + wide_pressure_score`, and the index is appended to the signal digest payload immediately after `override_pressure_score`. ROUNDING: wide_all_overlap_ms // 86 = CEIL. ROUNDING: wide_severity_overlap_ms // 88 = FLOOR.
-Shift lead noted routine snapshot drift on gamma during console window 0338 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9138 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0338 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 78 live, 23 tombstoned, zero dangling references; the reclaimed space returned 51 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 85 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0339 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0339 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9139 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0339 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 92 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 6s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 25% headroom after the eu-central onboarding; growth trend projects the next expansion at week 2, tracked under the standing capacity ticket.
 
 ### Console shift 0340 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0340 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9140 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0340 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 106 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 113 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 > **Incident note (2026-04-11 - #SNP-4402)** Imran: signal export keeps only severity == 'critical' rows, but on-call queue expects both high and critical.
 
 ### Console shift 0341 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0341 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9141 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0341 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 120 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 5.
+Restore drill from vol-archive-02 rehydrated 127 GiB in 31 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0342 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0342 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9142 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0342 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 9:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 41s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 141 objects in flight and none lost.
 
 ### Console shift 0343 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0343 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9143 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0343 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 148 live, 13 tombstoned, zero dangling references; the reclaimed space returned 9 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 155 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0344 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0344 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9144 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0344 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 162 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 11s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 35% headroom after the eu-central onboarding; growth trend projects the next expansion at week 12, tracked under the standing capacity ticket.
 
 ### Console shift 0345 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0345 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9145 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0345 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 176 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 183 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0346 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0346 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9146 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0346 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 190 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 15.
+Restore drill from vol-archive-02 rehydrated 197 GiB in 36 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0347 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0347 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9147 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0347 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 10:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 1s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 211 objects in flight and none lost.
 
 ### Console shift 0348 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0348 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9148 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0348 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 218 live, 3 tombstoned, zero dangling references; the reclaimed space returned 19 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 225 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0349 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0349 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9149 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0349 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 232 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 16s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 45% headroom after the eu-central onboarding; growth trend projects the next expansion at week 22, tracked under the standing capacity ticket.
 
 ### Console shift 0350 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0350 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9150 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0350 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 246 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 253 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0351 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0351 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9151 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0351 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 260 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 25.
+Restore drill from vol-archive-02 rehydrated 267 GiB in 41 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0352 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0352 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9152 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0352 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 2:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 6s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 281 objects in flight and none lost.
 
 ### Console shift 0353 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0353 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9153 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0353 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 288 live, 33 tombstoned, zero dangling references; the reclaimed space returned 29 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 295 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0354 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0354 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9154 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0354 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 42 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 21s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 55% headroom after the eu-central onboarding; growth trend projects the next expansion at week 32, tracked under the standing capacity ticket.
 
 ### Console shift 0355 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0355 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9155 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0355 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 56 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 63 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0356 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0356 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9156 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0356 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 70 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 35.
+Restore drill from vol-archive-02 rehydrated 77 GiB in 1 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0357 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0357 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9157 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0357 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 3:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 11s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 91 objects in flight and none lost.
 
 ### Console shift 0358 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0358 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9158 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0358 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 98 live, 23 tombstoned, zero dangling references; the reclaimed space returned 39 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 105 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0359 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0359 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9159 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0359 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 112 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 26s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 10% headroom after the eu-central onboarding; growth trend projects the next expansion at week 42, tracked under the standing capacity ticket.
 
 ### Console shift 0360 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0360 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9160 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0360 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 126 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 133 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 > **Incident note (2026-04-12 - #SNP-4403)** Marta: signal rows are sorted ascending by captured_ms, but triage workflow requires descending recency.
 
 ### Console shift 0361 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0361 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9161 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0361 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 140 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 45.
+Restore drill from vol-archive-02 rehydrated 147 GiB in 6 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0362 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0362 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9162 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0362 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 4:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 16s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 161 objects in flight and none lost.
 
 ### Console shift 0363 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0363 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9163 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0363 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 168 live, 13 tombstoned, zero dangling references; the reclaimed space returned 49 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 175 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0364 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0364 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9164 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0364 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 182 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 31s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 20% headroom after the eu-central onboarding; growth trend projects the next expansion at week 52, tracked under the standing capacity ticket.
 
 ### Console shift 0365 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0365 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9165 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0365 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 196 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 203 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0366 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0366 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9166 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0366 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 210 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 3.
+Restore drill from vol-archive-02 rehydrated 217 GiB in 11 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0367 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0367 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9167 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0367 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 5:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 21s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 231 objects in flight and none lost.
 
 ### Console shift 0368 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0368 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9168 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0368 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 238 live, 3 tombstoned, zero dangling references; the reclaimed space returned 7 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 245 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0369 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0369 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9169 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0369 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 252 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 36s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 30% headroom after the eu-central onboarding; growth trend projects the next expansion at week 10, tracked under the standing capacity ticket.
 
 ### Console shift 0370 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0370 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9170 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0370 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 266 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 273 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0371 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0371 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9171 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0371 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 280 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 13.
+Restore drill from vol-archive-02 rehydrated 287 GiB in 16 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0372 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0372 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9172 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0372 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 6:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 26s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 41 objects in flight and none lost.
 
 ### Console shift 0373 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0373 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9173 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0373 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 48 live, 33 tombstoned, zero dangling references; the reclaimed space returned 17 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 55 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0374 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0374 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9174 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0374 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 62 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 41s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 40% headroom after the eu-central onboarding; growth trend projects the next expansion at week 20, tracked under the standing capacity ticket.
 
 ### Console shift 0375 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0375 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9175 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0375 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 76 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 83 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0376 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0376 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9176 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0376 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 90 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 23.
+Restore drill from vol-archive-02 rehydrated 97 GiB in 21 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0377 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0377 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9177 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0377 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 7:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 31s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 111 objects in flight and none lost.
 
 ### Console shift 0378 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0378 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9178 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0378 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 118 live, 23 tombstoned, zero dangling references; the reclaimed space returned 27 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 125 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0379 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0379 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9179 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0379 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 132 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 1s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 50% headroom after the eu-central onboarding; growth trend projects the next expansion at week 30, tracked under the standing capacity ticket.
 
 ### Console shift 0380 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0380 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9180 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0380 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 146 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 153 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 > **Incident note (2026-04-13 - #SNP-4410)** Nadia: source payloads include HIGH and Critical aliases; rollup must normalize to lowercase before routing.
 
 ### Console shift 0381 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0381 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9181 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0381 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 160 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 33.
+Restore drill from vol-archive-02 rehydrated 167 GiB in 26 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0382 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0382 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9182 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0382 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 8:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 36s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 181 objects in flight and none lost.
 
 ### Console shift 0383 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0383 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9183 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0383 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 188 live, 13 tombstoned, zero dangling references; the reclaimed space returned 37 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 195 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0384 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0384 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9184 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0384 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 202 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 6s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 60% headroom after the eu-central onboarding; growth trend projects the next expansion at week 40, tracked under the standing capacity ticket.
 
 ### Console shift 0385 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0385 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9185 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0385 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 216 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 223 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0386 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0386 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9186 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0386 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 230 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 43.
+Restore drill from vol-archive-02 rehydrated 237 GiB in 31 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0387 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0387 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9187 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0387 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 9:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 41s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 251 objects in flight and none lost.
 
 ### Console shift 0388 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0388 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9188 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0388 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 258 live, 3 tombstoned, zero dangling references; the reclaimed space returned 47 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 265 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0389 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0389 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9189 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0389 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 272 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 11s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 15% headroom after the eu-central onboarding; growth trend projects the next expansion at week 50, tracked under the standing capacity ticket.
 
 ### Console shift 0390 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0390 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9190 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0390 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 286 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 293 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0391 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0391 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9191 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0391 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 40 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 1.
+Restore drill from vol-archive-02 rehydrated 47 GiB in 36 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0392 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0392 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9192 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0392 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 10:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 1s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 61 objects in flight and none lost.
 
 ### Console shift 0393 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0393 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9193 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0393 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 68 live, 33 tombstoned, zero dangling references; the reclaimed space returned 5 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 75 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0394 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0394 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9194 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0394 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 82 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 16s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 25% headroom after the eu-central onboarding; growth trend projects the next expansion at week 8, tracked under the standing capacity ticket.
 
 ### Console shift 0395 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0395 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9195 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0395 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 96 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 103 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0396 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0396 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9196 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0396 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 110 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 11.
+Restore drill from vol-archive-02 rehydrated 117 GiB in 41 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0397 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0397 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9197 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0397 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 2:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 6s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 131 objects in flight and none lost.
 
 ### Console shift 0398 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0398 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9198 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0398 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 138 live, 23 tombstoned, zero dangling references; the reclaimed space returned 15 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 145 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0399 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0399 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9199 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0399 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 152 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 21s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 35% headroom after the eu-central onboarding; growth trend projects the next expansion at week 18, tracked under the standing capacity ticket.
 
 ### Console shift 0400 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0400 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9200 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0400 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 166 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 173 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 > **Incident note (2026-04-13 - #SNP-4411)** Imran: duplicate snapshot_id rows must collapse to the snapshot with highest captured_ms before aggregation.
 
 ### Console shift 0401 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0401 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9201 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0401 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 180 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 21.
+Restore drill from vol-archive-02 rehydrated 187 GiB in 1 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0402 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0402 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9202 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0402 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 3:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 11s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 201 objects in flight and none lost.
 
 ### Console shift 0403 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0403 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9203 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0403 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 208 live, 13 tombstoned, zero dangling references; the reclaimed space returned 25 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 215 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0404 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0404 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9204 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0404 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 222 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 26s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 45% headroom after the eu-central onboarding; growth trend projects the next expansion at week 28, tracked under the standing capacity ticket.
 
 ### Console shift 0405 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0405 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9205 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0405 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 236 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 243 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0406 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0406 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9206 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0406 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 250 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 31.
+Restore drill from vol-archive-02 rehydrated 257 GiB in 6 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0407 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0407 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9207 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0407 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 4:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 16s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 271 objects in flight and none lost.
 
 ### Console shift 0408 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0408 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9208 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0408 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 278 live, 3 tombstoned, zero dangling references; the reclaimed space returned 35 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 285 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0409 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0409 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9209 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0409 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 292 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 31s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 55% headroom after the eu-central onboarding; growth trend projects the next expansion at week 38, tracked under the standing capacity ticket.
 
 ### Console shift 0410 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0410 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9210 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0410 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 46 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 53 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0411 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0411 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9211 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0411 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 60 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 41.
+Restore drill from vol-archive-02 rehydrated 67 GiB in 11 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0412 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0412 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9212 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0412 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 5:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 21s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 81 objects in flight and none lost.
 
 ### Console shift 0413 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0413 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9213 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0413 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 88 live, 33 tombstoned, zero dangling references; the reclaimed space returned 45 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 95 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0414 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0414 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9214 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0414 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 102 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 36s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 10% headroom after the eu-central onboarding; growth trend projects the next expansion at week 48, tracked under the standing capacity ticket.
 
 ### Console shift 0415 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0415 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9215 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0415 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 116 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 123 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0416 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0416 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9216 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0416 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 130 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 51.
+Restore drill from vol-archive-02 rehydrated 137 GiB in 16 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0417 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0417 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9217 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0417 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 6:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 26s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 151 objects in flight and none lost.
 
 ### Console shift 0418 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0418 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9218 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0418 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 158 live, 23 tombstoned, zero dangling references; the reclaimed space returned 3 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 165 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0419 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0419 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9219 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0419 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 172 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 41s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 20% headroom after the eu-central onboarding; growth trend projects the next expansion at week 6, tracked under the standing capacity ticket.
 
 ### Console shift 0420 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0420 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9220 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0420 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 186 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 193 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 > **Incident note (2026-04-14 - #SNP-4412)** Marta: snapshots with dismissed=true must be excluded from escalated export, even for critical severity.
 
 ### Console shift 0421 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0421 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9221 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0421 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Retention audit on vol-archive-01 (us-east) confirmed 200 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 9.
+Restore drill from vol-archive-02 rehydrated 207 GiB in 21 minutes against the us-west standby, checksum-verified end to end; RPO held at 3 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0422 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0422 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9222 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0422 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Deduplication ratio on vol-hot-03 settled at 7:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 31s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 221 objects in flight and none lost.
 
 ### Console shift 0423 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0423 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9223 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0423 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 228 live, 13 tombstoned, zero dangling references; the reclaimed space returned 13 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 235 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0424 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0424 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9224 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0424 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Tier migration moved 242 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 1s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 30% headroom after the eu-central onboarding; growth trend projects the next expansion at week 16, tracked under the standing capacity ticket.
 
 ### Console shift 0425 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0425 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9225 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0425 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 256 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 263 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0426 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0426 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9226 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0426 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Retention audit on vol-archive-01 (us-east) confirmed 270 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 19.
+Restore drill from vol-archive-02 rehydrated 277 GiB in 26 minutes against the us-west standby, checksum-verified end to end; RPO held at 13 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0427 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0427 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9227 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0427 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Deduplication ratio on vol-hot-03 settled at 8:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 36s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 291 objects in flight and none lost.
 
 ### Console shift 0428 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0428 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9228 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0428 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 298 live, 3 tombstoned, zero dangling references; the reclaimed space returned 23 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 45 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0429 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0429 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9229 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0429 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Tier migration moved 52 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 6s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 40% headroom after the eu-central onboarding; growth trend projects the next expansion at week 26, tracked under the standing capacity ticket.
 
 ### Console shift 0430 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0430 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9230 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0430 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 66 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 73 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0431 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0431 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9231 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0431 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Retention audit on vol-archive-01 (us-east) confirmed 80 snapshots inside the 30-day window and 21 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 29.
+Restore drill from vol-archive-02 rehydrated 87 GiB in 31 minutes against the us-west standby, checksum-verified end to end; RPO held at 11 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0432 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0432 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9232 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0432 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Deduplication ratio on vol-hot-03 settled at 9:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from theta to the ap-south mirror peaked at 41s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 101 objects in flight and none lost.
 
 ### Console shift 0433 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0433 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9233 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0433 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 108 live, 33 tombstoned, zero dangling references; the reclaimed space returned 33 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 115 segments and matched every stored SHA-256; one soft media error on beta was remapped by the controller with no data movement required.
 
 ### Console shift 0434 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0434 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9234 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0434 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Tier migration moved 122 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 39-object sample returned within the 11s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 50% headroom after the eu-central onboarding; growth trend projects the next expansion at week 36, tracked under the standing capacity ticket.
 
 ### Console shift 0435 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0435 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9235 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0435 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 136 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between zeta and the sa-east index resolved 143 pending entries and quarantined 8 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0436 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0436 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9236 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0436 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Retention audit on vol-archive-01 (us-east) confirmed 150 snapshots inside the 30-day window and 11 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 39.
+Restore drill from vol-archive-02 rehydrated 157 GiB in 36 minutes against the us-west standby, checksum-verified end to end; RPO held at 9 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0437 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0437 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9237 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0437 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Deduplication ratio on vol-hot-03 settled at 10:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from beta to the ap-south mirror peaked at 1s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 171 objects in flight and none lost.
 
 ### Console shift 0438 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0438 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9238 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0438 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 178 live, 23 tombstoned, zero dangling references; the reclaimed space returned 43 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 185 segments and matched every stored SHA-256; one soft media error on delta was remapped by the controller with no data movement required.
 
 ### Console shift 0439 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0439 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9239 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0439 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Tier migration moved 192 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 29-object sample returned within the 16s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 60% headroom after the eu-central onboarding; growth trend projects the next expansion at week 46, tracked under the standing capacity ticket.
 
 ### Console shift 0440 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0440 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9240 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0440 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 206 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between theta and the sa-east index resolved 213 pending entries and quarantined 38 stale locks left by an interrupted job; the queue drained to zero before window close.
 > **Incident note (2026-04-14 - #SNP-4413)** Nadia: please keep the frozen snapshot untouched and derive evidence from that original source, not from a patched copy.
 
 ### Console shift 0441 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0441 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9241 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0441 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Retention audit on vol-archive-01 (us-east) confirmed 220 snapshots inside the 30-day window and 1 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 49.
+Restore drill from vol-archive-02 rehydrated 227 GiB in 41 minutes against the us-west standby, checksum-verified end to end; RPO held at 7 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0442 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0442 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9242 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0442 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Deduplication ratio on vol-hot-03 settled at 2:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from delta to the ap-south mirror peaked at 6s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 241 objects in flight and none lost.
 
 ### Console shift 0443 — delta lane
-Shift lead noted routine snapshot drift on delta during console window 0443 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9243 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0443 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 248 live, 13 tombstoned, zero dangling references; the reclaimed space returned 1 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 255 segments and matched every stored SHA-256; one soft media error on zeta was remapped by the controller with no data movement required.
 
 ### Console shift 0444 — epsilon lane
-Shift lead noted routine snapshot drift on epsilon during console window 0444 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9244 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0444 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Tier migration moved 262 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 19-object sample returned within the 21s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 15% headroom after the eu-central onboarding; growth trend projects the next expansion at week 4, tracked under the standing capacity ticket.
 
 ### Console shift 0445 — zeta lane
-Shift lead noted routine snapshot drift on zeta during console window 0445 (south, unauthenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9245 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0445 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer beta.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 276 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between beta and the sa-east index resolved 283 pending entries and quarantined 28 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ### Console shift 0446 — eta lane
-Shift lead noted routine snapshot drift on eta during console window 0446 (east, offset-cache). Pager noise stayed within SLO; dashboard lag ticket LOG-9246 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0446 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer gamma.
+Retention audit on vol-archive-01 (us-east) confirmed 290 snapshots inside the 30-day window and 31 eligible for expiry; the pruning job cleared them without touching the last-known-good full at generation 7.
+Restore drill from vol-archive-02 rehydrated 297 GiB in 1 minutes against the us-west standby, checksum-verified end to end; RPO held at 5 minutes and the drill catalog entry was signed off by two operators.
 
 ### Console shift 0447 — theta lane
-Shift lead noted routine snapshot drift on theta during console window 0447 (west, cross-volume). Pager noise stayed within SLO; dashboard lag ticket LOG-9247 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0447 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer corvus.
+Deduplication ratio on vol-hot-03 settled at 3:1 after the nightly compaction; the block index rebuilt cleanly and no orphaned chunks were reported by the integrity scanner.
+Replication lag from zeta to the ap-south mirror peaked at 11s during the vol-cold-07 sync burst, then recovered inside SLO; the catalog cross-check found 51 objects in flight and none lost.
 
 ### Console shift 0448 — alpha lane
-Shift lead noted routine snapshot drift on alpha during console window 0448 (central, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9248 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2025 for shift 0448 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer atlas.
+Snapshot expiry sweep on vol-nearline-11 reconciled the manifest against object storage: 58 live, 3 tombstoned, zero dangling references; the reclaimed space returned 11 GiB to the sa-east pool.
+Checksum verification pass over vol-tier2-04 re-read 65 segments and matched every stored SHA-256; one soft media error on theta was remapped by the controller with no data movement required.
 
 ### Console shift 0449 — beta lane
-Shift lead noted routine snapshot drift on beta during console window 0449 (coastal, batch-replay). Pager noise stayed within SLO; dashboard lag ticket LOG-9249 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2026 for shift 0449 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer coral.
+Tier migration moved 72 cold snapshots off vol-object-09 to nearline in us-west; the recall test on a random 9-object sample returned within the 26s budget and updated the placement catalog.
+Capacity review for vol-block-15 showed 25% headroom after the eu-central onboarding; growth trend projects the next expansion at week 14, tracked under the standing capacity ticket.
 
 ### Console shift 0450 — gamma lane
-Shift lead noted routine snapshot drift on gamma during console window 0450 (north, authenticated-restore). Pager noise stayed within SLO; dashboard lag ticket LOG-9250 was attributed to stale cache refresh, not the rollup pipeline.
-Historical CSV migration threads from 2024 for shift 0450 are archived and non-authoritative for current JSON export acceptance. Analysts should cross-check against bundled events.json and report_spec.json rather than chat excerpts from acquirer alpha.
+Full-plus-incremental chain on vol-snap-22 was validated by replaying 86 increments onto the ap-south scratch volume; the synthetic full it produced matched the direct full byte for byte.
+Catalog reconciliation between delta and the sa-east index resolved 93 pending entries and quarantined 18 stale locks left by an interrupted job; the queue drained to zero before window close.
 
 ## Vendor email archive
 
