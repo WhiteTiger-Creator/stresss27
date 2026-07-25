@@ -524,25 +524,80 @@ def _compute_escalated(events: list[dict], override_rows: list[dict] | None = No
     return rows
 
 
+CANDIDATE_USER = os.environ.get("CANDIDATE_USER", "snapshot-candidate")
+
+
+def _candidate_enabled() -> bool:
+    """True when we are root and can drop privileges to the unprivileged candidate."""
+    if os.geteuid() != 0:
+        return False
+    if shutil.which("runuser") is None:
+        return False
+    return (
+        subprocess.run(["id", CANDIDATE_USER], capture_output=True, check=False).returncode
+        == 0
+    )
+
+
+def _grant_traversal(path: Path) -> None:
+    for parent in Path(path).resolve().parents:
+        sp = str(parent)
+        if sp in ("/", "/tmp"):
+            break
+        if sp.startswith(("/tests", "/solution")):
+            continue
+        try:
+            os.chmod(parent, (os.stat(parent).st_mode & 0o777) | 0o055)
+        except OSError:
+            pass
+
+
+def _stage_readable(path: Path) -> Path:
+    """Return a candidate-readable path; inputs under the locked trees are copied out."""
+    p = Path(path)
+    if not str(p).startswith(("/tests", "/solution")):
+        return p
+    fd, tmp = tempfile.mkstemp(prefix="cand_", suffix="_" + p.name)
+    os.close(fd)
+    shutil.copy(p, tmp)
+    os.chmod(tmp, 0o644)
+    return Path(tmp)
+
+
+def _run_candidate(
+    argv: list[str], *, write_dirs: tuple[Path, ...] = ()
+) -> subprocess.CompletedProcess[str]:
+    """Run candidate-controlled code, dropping to the unprivileged candidate user
+    (real OS isolation from /tests and /solution) when we are root."""
+    for directory in write_dirs:
+        Path(directory).mkdir(parents=True, exist_ok=True)
+        try:
+            os.chmod(directory, 0o777)
+            _grant_traversal(Path(directory))
+        except OSError:
+            pass
+    if _candidate_enabled():
+        argv = ["runuser", "-u", CANDIDATE_USER, "--", *argv]
+    return subprocess.run(  # noqa: PLW1510
+        argv, capture_output=True, text=True, timeout=90
+    )
+
+
 def _run_pipeline(
     pipeline: Path = PIPELINE,
     input_path: Path = INPUT_PATH,
     output_dir: Path = OUTPUT_DIR,
 ) -> subprocess.CompletedProcess[str]:
     output_dir.mkdir(parents=True, exist_ok=True)
-    return subprocess.run(  # noqa: PLW1510
-        [
-            "python3",
-            str(pipeline),
-            "--input",
-            str(input_path),
-            "--output-dir",
-            str(output_dir),
-        ],
-        capture_output=True,
-        text=True,
-        timeout=30,
-    )
+    argv = [
+        "python3",
+        str(_stage_readable(pipeline)),
+        "--input",
+        str(_stage_readable(input_path)),
+        "--output-dir",
+        str(output_dir),
+    ]
+    return _run_candidate(argv, write_dirs=(output_dir,))
 
 
 def _escalated_rows(path: Path = FLAGGED_PATH) -> list[dict]:
@@ -990,11 +1045,10 @@ def test_repair_repatches_reset_workflow_with_custom_output_dir(
     current = PIPELINE.read_text()
     try:
         shutil.copy(ORIGINAL_PIPELINE, PIPELINE)
-        result = subprocess.run(  # noqa: PLW1510
+        os.chmod(PIPELINE, 0o664)  # copy carried .original's read-only mode; candidate must rewrite it
+        result = _run_candidate(
             ["python3", str(CLI), "repair", "--output-dir", str(custom_dir)],
-            capture_output=True,
-            text=True,
-            timeout=60,
+            write_dirs=(custom_dir,),
         )
         assert result.returncode == 0, result.stderr
         repaired_source = PIPELINE.read_text()
