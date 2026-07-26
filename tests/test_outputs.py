@@ -338,6 +338,66 @@ def _annotate_chain_reach(rows: list[dict]) -> None:
             rows[index]["chain_reach_digest"] = chain["reach_digest"]
 
 
+def _annotate_chain_influence(rows):
+    chains = {}
+    for row in rows:
+        chain = chains.setdefault(
+            row["chain_id"],
+            {
+                "start_ms": row["captured_ms"],
+                "end_ms": row["captured_ms"],
+                "assets": set(),
+                "tokens": set(),
+                "risk": row["chain_risk_score"],
+            },
+        )
+        chain["start_ms"] = min(chain["start_ms"], row["captured_ms"])
+        chain["end_ms"] = max(chain["end_ms"], row["captured_ms"])
+        chain["assets"].add(row["volume"])
+        chain["tokens"].update(str(row["detector"]).lower().split())
+    order = sorted(chains)
+    neighbors = {chain_id: [] for chain_id in order}
+    for left_pos in range(len(order)):
+        for right_pos in range(left_pos + 1, len(order)):
+            left = chains[order[left_pos]]
+            right = chains[order[right_pos]]
+            gap_ms = max(
+                0,
+                max(left["start_ms"], right["start_ms"])
+                - min(left["end_ms"], right["end_ms"]),
+            )
+            if gap_ms > 3000:
+                continue
+            shared_assets = len(left["assets"] & right["assets"])
+            shared_tokens = len(left["tokens"] & right["tokens"])
+            if shared_assets == 0 and shared_tokens == 0:
+                continue
+            weight = 1 + (2 * shared_assets) + shared_tokens
+            neighbors[order[left_pos]].append((order[right_pos], weight))
+            neighbors[order[right_pos]].append((order[left_pos], weight))
+    influence = {chain_id: chains[chain_id]["risk"] for chain_id in order}
+    rounds = 0
+    while True:
+        updated = {}
+        for chain_id in order:
+            best = 0
+            for neighbor_id, weight in neighbors[chain_id]:
+                best = max(best, influence[neighbor_id] + weight)
+            updated[chain_id] = chains[chain_id]["risk"] + (best // 2)
+        if updated == influence:
+            break
+        influence = updated
+        rounds += 1
+    for row in rows:
+        chain_id = row["chain_id"]
+        score = influence[chain_id]
+        row["chain_influence_score"] = score
+        row["chain_influence_rounds"] = rounds
+        row["chain_influence_digest"] = hashlib.sha256(
+            f"{chain_id}|{score}|{rounds}".encode()
+        ).hexdigest()[:12]
+
+
 def _compute_summary(events: list[dict], override_rows: list[dict] | None = None) -> dict:
     canonical = _canonicalize_events(events)
     severity_counts = {severity: 0 for severity in SEVERITY_ORDER}
@@ -403,6 +463,13 @@ def _compute_summary(events: list[dict], override_rows: list[dict] | None = None
                 row["chain_reach_digest"] for row in signals
             ).encode("utf-8")
         ).hexdigest(),
+        "max_chain_influence_score": max(
+            (row["chain_influence_score"] for row in signals),
+            default=0,
+        ),
+        "chain_influence_digest_checksum": hashlib.sha256(
+            "|".join(row["chain_influence_digest"] for row in signals).encode("utf-8")
+        ).hexdigest(),
         "signal_digest_checksum": hashlib.sha256(
             "|".join(row["signal_digest"] for row in signals).encode("utf-8")
         ).hexdigest(),
@@ -428,7 +495,7 @@ def _escalation_ledger(signals: list[dict]) -> dict:
             else max(previous_captured_ms - signal["captured_ms"], 0)
         )
         carry_in = max(previous_carry_out - (gap_ms // 150), 0)
-        pressure = signal["chain_risk_score"] + (-(-carry_in // 3))
+        pressure = signal["chain_risk_score"] + (-(-carry_in // 3)) + (signal["chain_influence_score"] // 8)
         carry_out = min(
             carry_in + signal["chain_risk_score"] - (signal["chain_size"] // 2), 83
         )
@@ -498,6 +565,7 @@ def _compute_escalated(events: list[dict], override_rows: list[dict] | None = No
         )
     _annotate_chains(rows)
     _annotate_chain_reach(rows)
+    _annotate_chain_influence(rows)
     for row in rows:
         row["signal_digest"] = hashlib.sha1(
             (
@@ -807,6 +875,8 @@ def test_verified_summary_matches_independent_computation(diagnosis: dict, expec
         "chain_digest_checksum",
         "max_chain_reach_score",
         "chain_reach_digest_checksum",
+        "max_chain_influence_score",
+        "chain_influence_digest_checksum",
         "signal_digest_checksum",
         "critical_escalation_ids",
         "critical_escalation_count",
@@ -1491,3 +1561,26 @@ def test_snapshot_signing_key_locked_down():
     assert (info.st_mode & 0o777) == 0o600
     assert info.st_uid == pwd.getpwnam("root").pw_uid
     assert info.st_gid == pwd.getpwnam("root").pw_gid
+
+
+def test_chain_influence_fixed_point_reported(summary: dict, escalated_rows: list[dict]):
+    """The #BAK-5398 chain-influence fixed point is computed and reported.
+
+    Influence couples chains over an undirected graph and iterates synchronously to a
+    fixed point, so on the shipped inputs it takes at least one round and lifts coupled
+    chains above their raw chain_risk_score. A single-pass or in-place (Gauss-Seidel)
+    implementation produces different scores and fails the exact-output comparison.
+    """
+    assert "max_chain_influence_score" in summary
+    assert len(summary["chain_influence_digest_checksum"]) == 64
+    for row in escalated_rows:
+        assert isinstance(row["chain_influence_score"], int)
+        assert isinstance(row["chain_influence_rounds"], int)
+        assert row["chain_influence_score"] >= row["chain_risk_score"]
+        assert len(row["chain_influence_digest"]) == 12
+        expected = hashlib.sha256(
+            f"{row['chain_id']}|{row['chain_influence_score']}|{row['chain_influence_rounds']}".encode()
+        ).hexdigest()[:12]
+        assert row["chain_influence_digest"] == expected
+    assert any(row["chain_influence_rounds"] >= 1 for row in escalated_rows)
+    assert any(row["chain_influence_score"] > row["chain_risk_score"] for row in escalated_rows)

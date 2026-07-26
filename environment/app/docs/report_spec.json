@@ -71,12 +71,15 @@
       "chain_digest_checksum",
       "max_chain_reach_score",
       "chain_reach_digest_checksum",
+      "max_chain_influence_score",
+      "chain_influence_digest_checksum",
       "signal_digest_checksum",
       "critical_escalation_ids",
       "critical_escalation_count",
       "max_escalation_pressure",
       "escalation_ledger_checksum"
-    ]
+    ],
+    "schema_version_value": "identity-triage-v2"
   },
   "cli": {
     "path": "/app/snapshot_audit.py",
@@ -150,7 +153,7 @@
         ],
         "pipeline_evidence_source": "/app/workflow/.export_report.original",
         "pipeline_evidence_format": "literal substring excerpt from frozen original workflow source",
-        "dossier_quote_format": "verbatim excerpt from /app/incident/export_dossier.md (whitespace-normalized match)",
+        "dossier_quote_format": "A verbatim, character-for-character literal substring of /app/incident/export_dossier.md \u2014 it must appear byte-identically in that file (the tests assert `dossier_quote in dossier_text`). Do NOT paraphrase, reword, join fragments, or normalize whitespace; copy an exact run of characters that contains the required terms.",
         "minimum_lengths": {
           "dossier_quote": 30,
           "pipeline_evidence": 10,
@@ -264,6 +267,8 @@
         "chain_digest_checksum",
         "max_chain_reach_score",
         "chain_reach_digest_checksum",
+        "max_chain_influence_score",
+        "chain_influence_digest_checksum",
         "signal_digest_checksum",
         "critical_escalation_ids",
         "critical_escalation_count",
@@ -395,6 +400,8 @@
       "chain_digest_checksum": "sha256('|'.join(chain_digest values in final signal order)) lowercase 64 hex chars",
       "max_chain_reach_score": "maximum chain_reach_score across final signal rows (0 when none)",
       "chain_reach_digest_checksum": "sha256('|'.join(chain_reach_digest values in final signal order)) lowercase 64 hex chars",
+      "max_chain_influence_score": "maximum chain_influence_score across final signal rows (0 when none); chain influence is the #BAK-5398 synchronous fixed point",
+      "chain_influence_digest_checksum": "sha256('|'.join(chain_influence_digest values in final signal order)) lowercase 64 hex chars",
       "signal_digest_checksum": "sha256('|'.join(signal_digest values in final signal order)) lowercase 64 hex chars"
     },
     "volume_matrix_json": {
@@ -413,7 +420,8 @@
         "high",
         "medium",
         "low"
-      ]
+      ],
+      "exact_keys_rule": "Each volume maps to an object with EXACTLY the four keys critical, high, medium, low (in that order) and no others. Do NOT add dismissed/escalated/suppressed or any other key; extra keys fail the schema."
     },
     "escalated_jsonl": {
       "required_fields": [
@@ -434,7 +442,10 @@
         "chain_reach_depth",
         "chain_reach_path",
         "chain_reach_digest",
-        "signal_digest"
+        "signal_digest",
+        "chain_influence_score",
+        "chain_influence_rounds",
+        "chain_influence_digest"
       ],
       "sort": "captured_ms desc, severity rank desc, chain_risk_score desc, chain_reach_score desc, override_pressure_score desc, snapshot_id asc",
       "severities_included": [
@@ -474,7 +485,9 @@
     "chain_id": "first 10 lowercase SHA1 hex chars of comma_joined_chain_snapshot_ids",
     "chain_reach_digest": "first 12 lowercase SHA256 hex chars of chain_id|chain_reach_score|chain_reach_depth|comma_joined_chain_reach_path",
     "signal_digest": "first 12 lowercase SHA1 hex chars of snapshot_id|captured_ms|severity|volume|detector|override_pressure_score|pressure_index|chain_id|chain_size|chain_span_ms|chain_risk_score|chain_digest|chain_reach_score|chain_reach_depth|comma_joined_chain_reach_path|chain_reach_digest",
-    "escalation_ledger_checksum": "SHA-256 over one line per signal row in escalated.jsonl export order, `snapshot_id|escalation_pressure|c|carry_out` with c=1 for an escalation-critical row else 0, joined by a single newline, no trailing newline, hashed over UTF-8. The values themselves are governed by the dossier."
+    "escalation_ledger_checksum": "SHA-256 over one line per signal row in escalated.jsonl export order, `snapshot_id|escalation_pressure|c|carry_out` with c=1 for an escalation-critical row else 0, joined by a single newline, no trailing newline, hashed over UTF-8. The per-row escalation_pressure and carry values are governed by the dossier's latest #BAK ledger ruling; note that the carry credit is ROUNDED UP (ceil) while the gap decay and the chain-size debit are floored.",
+    "identifier_note": "chain_id is a TRUNCATED 10-char sha1 hex; chain_digest, chain_reach_digest and signal_digest are TRUNCATED 12-char hex digests (NOT full 40/64-char hashes). Emit exactly the stated lengths. The summary *_checksum fields are full 64-char sha256 digests \u2014 do not truncate those.",
+    "chain_influence_digest": "first 12 lowercase SHA256 hex chars of chain_id|chain_influence_score|chain_influence_rounds"
   },
   "semantics_source": {
     "notes": "This document is the output contract only: CLI shapes, report schemas, exact key sets, checksum serialization and digest payload encodings. It does NOT define how values are derived.",
