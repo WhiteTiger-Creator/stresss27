@@ -4,8 +4,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        tmux \
-        asciinema \
+        tmux=3.3a-3 \
+        asciinema=2.2.0-1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Fully resolved verifier lock; --no-deps keeps installation deterministic.
