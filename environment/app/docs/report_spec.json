@@ -153,7 +153,7 @@
         ],
         "pipeline_evidence_source": "/app/workflow/.export_report.original",
         "pipeline_evidence_format": "literal substring excerpt from frozen original workflow source",
-        "dossier_quote_format": "A verbatim, character-for-character literal substring of /app/incident/export_dossier.md \u2014 it must appear byte-identically in that file (the tests assert `dossier_quote in dossier_text`). Do NOT paraphrase, reword, join fragments, or normalize whitespace; copy an exact run of characters that contains the required terms.",
+        "dossier_quote_format": "A verbatim, character-for-character literal substring of /app/incident/export_dossier.md \u2014 it must appear byte-identically in that file. Do NOT paraphrase, reword, join fragments, or normalize whitespace; copy an exact run of characters that contains the required terms.",
         "minimum_lengths": {
           "dossier_quote": 30,
           "pipeline_evidence": 10,
