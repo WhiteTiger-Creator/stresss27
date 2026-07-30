@@ -795,6 +795,38 @@ def test_output_dir_contains_exactly_the_five_contract_files():
     assert actual == expected, f"output dir must contain exactly {expected}, found {actual}"
 
 
+def test_repair_audit_fields_are_exact():
+    """repair_audit.json reproduces the contracted processing_steps in order, records every
+    forbidden token as removed, carries the pre-repair SHA-256 of the frozen original bytes, and
+    reports post-repair escalated counts consistent with the produced summary and an idempotent
+    re-run."""
+    audit = json.loads(REPAIR_AUDIT_PATH.read_text())
+    spec = SPEC_DATA["repair_audit"]
+    assert audit["patched_workflow"] == "/app/workflow/export_report.py"
+    assert audit["processing_steps"] == spec["processing_steps"]
+    forbidden = spec["forbidden_executable_tokens"]
+    assert audit["removed_tokens"] == {token: True for token in forbidden}, (
+        "every forbidden executable token must be recorded as removed"
+    )
+    frozen_sha = hashlib.sha256(ORIGINAL_PIPELINE.read_bytes()).hexdigest()
+    assert audit["pre_repair"]["pipeline_source_sha256"] == frozen_sha, (
+        "pre_repair.pipeline_source_sha256 must be the SHA-256 of the frozen original bytes"
+    )
+    summary = json.loads(SUMMARY_PATH.read_text())
+    assert audit["post_repair"]["escalated_count"] == summary["escalated_count"]
+    assert audit["post_repair"]["rerun_escalated_count"] == summary["escalated_count"], (
+        "the idempotency re-run must escalate the same count"
+    )
+
+
+def test_frozen_snapshot_unchanged_after_repair():
+    """The frozen pre-incident snapshot /app/workflow/.export_report.original is read-only forensic
+    evidence and must be byte-identical to its shipped bytes after repair has run."""
+    assert hashlib.sha256(ORIGINAL_PIPELINE.read_bytes()).hexdigest() == BROKEN_PIPELINE_SHA256, (
+        "/app/workflow/.export_report.original must not be modified by repair"
+    )
+
+
 def test_diagnosis_schema_repaired(diagnosis: dict):
     """The repaired-mode diagnosis report has pipeline_status repaired and the required keys."""
     for key in ("pipeline_status", "issues_found", "input_stats", "verified_summary", "output_paths"):

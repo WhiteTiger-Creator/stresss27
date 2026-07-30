@@ -153,7 +153,7 @@
         ],
         "pipeline_evidence_source": "/app/workflow/.export_report.original",
         "pipeline_evidence_format": "literal substring excerpt from frozen original workflow source",
-        "dossier_quote_format": "A verbatim, character-for-character literal substring of /app/incident/export_dossier.md \u2014 it must appear byte-identically in that file. Do NOT paraphrase, reword, join fragments, or normalize whitespace; copy an exact run of characters that contains the required terms.",
+        "dossier_quote_format": "A verbatim literal substring of /app/incident/export_dossier.md \u2014 every word, punctuation mark and piece of casing must come straight from that file, though runs of whitespace are treated as equivalent when matched (re-wrapping a long line across newlines still matches). Do NOT paraphrase, reword, join fragments, drop a parenthetical or elide with an ellipsis; copy an exact run of characters that contains the required terms.",
         "minimum_lengths": {
           "dossier_quote": 30,
           "pipeline_evidence": 10,
@@ -360,13 +360,7 @@
     "acceptance_contract": "The repaired workflow must satisfy canonicalization and outputs without relying on test or solution artifacts.",
     "repair_state_contract": {
       "self_contained": "every snapshot_audit.py repair invocation must write a correct repaired implementation to /app/workflow/export_report.py before running it",
-      "starting_state": "verification may copy /app/workflow/.export_report.original over the active workflow immediately before repair, including with a custom --output-dir; never assume solve.sh or an earlier command already patched it",
-      "sequence": [
-        "capture pre-repair hash and token evidence from the frozen original",
-        "install the corrected active workflow",
-        "run it with the requested output directory",
-        "run it again to verify idempotency"
-      ],
+      "starting_state": "repair must rebuild the corrected workflow from the frozen snapshot on every invocation and must not assume the active /app/workflow/export_report.py is already patched; the active file may hold the pre-incident source when repair runs, including under a custom --output-dir",
       "frozen_original": "never write to /app/workflow/.export_report.original"
     }
   },
